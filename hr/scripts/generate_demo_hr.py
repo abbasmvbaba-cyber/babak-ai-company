@@ -367,7 +367,7 @@ def avatar_svg(employee: dict, number: int) -> str:
         return f'''<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="عکس پرسنلی نمایشی {full}">
   <title>عکس پرسنلی نمایشی — {full}</title>
   <rect width="512" height="512" fill="#071b31"/>
-  <image href="../../../assets/characters/ceo/babak-moradvand-personnel-photo.png" x="0" y="0" width="512" height="512" preserveAspectRatio="xMidYMid slice"/>
+  <image href="../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp" x="0" y="0" width="512" height="512" preserveAspectRatio="xMidYMid slice"/>
 </svg>\n'''
     if gender == "زن":
         hair_shape = f'<path d="M145 232 Q145 105 256 105 Q367 105 367 232 L367 365 Q332 404 256 410 Q180 404 145 365Z" fill="{hair}"/>'
@@ -407,7 +407,7 @@ def md_table(rows: list[dict]) -> str:
 def doc_header(employee: dict, title: str) -> str:
     photo_block = "\n"
     if employee["employee_id"] == "BAC-0001":
-        photo_block = "\n![عکس پرسنلی سه‌بعدی نمایشی بابک مرادوند](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.png)\n"
+        photo_block = "\n![عکس پرسنلی سه‌بعدی نمایشی بابک مرادوند](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp)\n"
     return f"""---\nemployee_id: {employee['employee_id']}\nsynthetic_demo: true\n---\n\n# {title}\n\n> این سند دادهٔ نمایشی و غیرواقعی برای نمونه‌سازی سامانهٔ منابع انسانی «کمپانی هوش مصنوعی بابک» است و ارزش حقوقی ندارد.{photo_block}\n"""
 
 
@@ -415,7 +415,7 @@ def profile_md(employee: dict) -> str:
     family = employee["family_info"]
     is_ceo = employee["employee_id"] == "BAC-0001"
     photo_label = "عکس پرسنلی سه‌بعدی نمایشی" if is_ceo else "تصویر پروفایل نمونه"
-    photo_href = "../../../assets/characters/ceo/babak-moradvand-personnel-photo.png" if is_ceo else "photo.svg"
+    photo_href = "../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp" if is_ceo else "photo.svg"
     return f"""---
 employee_id: {employee['employee_id']}
 full_name: {employee['full_name']}
@@ -556,7 +556,7 @@ def family_md(employee: dict) -> str:
 def checklist_md(employee: dict) -> str:
     is_ceo = employee["employee_id"] == "BAC-0001"
     photo_description = "عکس پرسنلی سه‌بعدی نمایشی مدیرعامل، غیرواقعی" if is_ceo else "آواتار برداری ساختگی، نه عکس شخص واقعی"
-    photo_link = "[babak-moradvand-personnel-photo.png](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.png)" if is_ceo else "[photo.svg](../photo.svg)"
+    photo_link = "[babak-moradvand-personnel-photo.webp](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp)" if is_ceo else "[photo.svg](../photo.svg)"
     return doc_header(employee, "چک‌لیست مدارک پرونده") + f"""## مدارک ایجادشده برای نمونه‌سازی
 
 | مدرک | مسیر / وضعیت | توضیح |
@@ -580,7 +580,7 @@ def profile_html(employee: dict) -> str:
     e = employee
     is_ceo = e["employee_id"] == "BAC-0001"
     photo_alt = "عکس پرسنلی سه‌بعدی نمایشی" if is_ceo else "تصویر نمونه"
-    photo_src = "../../../assets/characters/ceo/babak-moradvand-personnel-photo.png" if is_ceo else "photo.svg"
+    photo_src = "../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp" if is_ceo else "photo.svg"
     education_rows = "".join(
         f"<tr><td>{html.escape(r['level'])}</td><td>{html.escape(r['field'])}</td><td>{html.escape(r['institution'])}</td><td>{html.escape(r['start_date'])}</td><td>{html.escape(r['issue_date'])}</td><td>{html.escape(r['status'])}</td></tr>"
         for r in e["education"]
@@ -702,8 +702,8 @@ def build_employees() -> list[dict]:
                 ],
                 "family_info": {"marital_status": "مجرد", "spouse_name": "ندارد", "children_count": 0},
                 "work_email": "ceo@babak-ai.company",
-                "personnel_photo_file": "assets/characters/ceo/babak-moradvand-personnel-photo.png",
-                "personnel_photo_asset": "assets/characters/ceo/babak-moradvand-personnel-photo.png",
+                "personnel_photo_file": "assets/characters/ceo/babak-moradvand-personnel-photo.webp",
+                "personnel_photo_asset": "assets/characters/ceo/babak-moradvand-personnel-photo.webp",
             })
         employees.append(record)
     # Second pass attaches the department head as a supervisor.

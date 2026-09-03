@@ -5,7 +5,7 @@
 **Status:** Concept render v2 — not yet rigged  
 **Concept image:** `babak-moradvand-3d-concept.png`
 
-**Personnel photo:** `babak-moradvand-personnel-photo.png` — approved synthetic portrait used by HR and Company OS
+**Personnel photo:** `babak-moradvand-personnel-photo.webp` — approved synthetic portrait used by HR and Company OS
 
 ## Visual lock
 

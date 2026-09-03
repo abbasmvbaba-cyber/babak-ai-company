@@ -6,13 +6,13 @@ synthetic_demo: true
 # چک‌لیست مدارک پرونده
 
 > این سند دادهٔ نمایشی و غیرواقعی برای نمونه‌سازی سامانهٔ منابع انسانی «کمپانی هوش مصنوعی بابک» است و ارزش حقوقی ندارد.
-![عکس پرسنلی سه‌بعدی نمایشی بابک مرادوند](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.png)
+![عکس پرسنلی سه‌بعدی نمایشی بابک مرادوند](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp)
 
 ## مدارک ایجادشده برای نمونه‌سازی
 
 | مدرک | مسیر / وضعیت | توضیح |
 |---|---|---|
-| تصویر پروفایل | [babak-moradvand-personnel-photo.png](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.png) — آماده | عکس پرسنلی سه‌بعدی نمایشی مدیرعامل، غیرواقعی |
+| تصویر پروفایل | [babak-moradvand-personnel-photo.webp](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp) — آماده | عکس پرسنلی سه‌بعدی نمایشی مدیرعامل، غیرواقعی |
 | فرم اطلاعات پرسنلی | [profile.md](../profile.md) — آماده | داده‌های ساختگی برای تست |
 | خلاصه استخدام | [employment-record.md](employment-record.md) — آماده | پیش‌نویس داخلی غیرالزام‌آور |
 | سوابق تحصیلی | [education-record.md](education-record.md) — آماده | رکورد نمایشی، بدون اصل مدرک |

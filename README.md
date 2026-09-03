@@ -16,7 +16,8 @@
 | `index.html` | صفحه‌ی ورود جدید انگلیسی و بدون نیاز به نصب |
 | `dashboard.html` | داشبورد اصلی English با نمای 2.5D شرکت، KPIها و AI Command Center |
 | `hr-documents.html` | مسیر سازگار خزانهٔ اسناد HR؛ داخل داشبورد با پوسته و چت باز می‌شود |
-| `assets/office-map.png` | تصویر مرجع نمای سه‌بعدی دفتر شرکت |
+| `assets/office-map.webp` | نسخهٔ بهینه‌شدهٔ وب از نمای سه‌بعدی دفتر شرکت (WebP) |
+| `assets/office-map.png` | فایل master باکیفیت برای آرشیو و ویرایش، در سایت بارگذاری نمی‌شود |
 | `assets/babak-logo.svg` | لوگوی اختصاصی Babak AI Company |
 | `assets/characters/ceo/` | کانسپت سه‌بعدی، عکس پرسنلی synthetic مدیرعامل بابک و مشخصات ریگ/کنترل‌پذیری برای مرحلهٔ مدل‌سازی |
 | `hr/index.html` | دایرکتوری گرافیکی ۷۲ پرسنل با جست‌وجو و فیلتر |

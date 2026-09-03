@@ -62,7 +62,7 @@ synthetic_demo: true
 
 ## اسناد موجود در این پوشه
 
-- [عکس پرسنلی سه‌بعدی نمایشی](../../../assets/characters/ceo/babak-moradvand-personnel-photo.png)
+- [عکس پرسنلی سه‌بعدی نمایشی](../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp)
 - [خلاصه استخدام و حکم داخلی نمونه](documents/employment-record.md)
 - [سوابق تحصیلی نمونه](documents/education-record.md)
 - [خلاصه جبران خدمات نمونه](documents/compensation-record.md)

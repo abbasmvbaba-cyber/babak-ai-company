@@ -6,7 +6,7 @@ synthetic_demo: true
 # خلاصه جبران خدمات نمونه
 
 > این سند دادهٔ نمایشی و غیرواقعی برای نمونه‌سازی سامانهٔ منابع انسانی «کمپانی هوش مصنوعی بابک» است و ارزش حقوقی ندارد.
-![عکس پرسنلی سه‌بعدی نمایشی بابک مرادوند](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.png)
+![عکس پرسنلی سه‌بعدی نمایشی بابک مرادوند](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.webp)
 
 ## اطلاعات حقوقی
 
