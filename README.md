@@ -27,11 +27,13 @@
 | `Agency-in-a-BOX-main.zip` | موتور متنی Agency-in-a-BOX برای مرحلهٔ اتصال بعدی |
 
 ## وضعیت فعلی
-1. صفحه‌ی ورودی استاتیک ✅
+1. صفحه‌ی ورودی استاتیک انگلیسی ✅
 2. بستهٔ HR نمونه برای ۷۲ نفر ✅
-3. ساخت داشبورد کامل + تم نئونی در گام بعد
-4. اتصال Supabase (دیتابیس، Auth و Realtime) در گام بعد
-5. اضافه‌کردن PWA و AI Command Center در گام بعد
+3. داشبورد SPA با Overview، People و Departments ✅
+4. نمایش People به تفکیک دپارتمان با وضعیت نمونهٔ قرمز/سبز ✅
+5. HR Personnel Documents با بازشدن پرونده و سند در همان پوسته ✅
+6. AI Command Center ثابت در همهٔ نماها ✅
+7. اتصال Supabase، Auth، Realtime و PWA در گام بعد
 
 ## اجرای آنلاین
 نسخهٔ GitHub Pages در این آدرس در دسترس است:
