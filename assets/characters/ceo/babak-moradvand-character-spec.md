@@ -2,14 +2,15 @@
 
 **Character ID:** `BAC-0001`  
 **Role:** Chief Executive Officer  
-**Status:** Concept render v1 — not yet rigged  
+**Status:** Concept render v2 — not yet rigged  
 **Concept image:** `babak-moradvand-3d-concept.png`
 
 ## Visual lock
 
 - Adult Iranian male with the facial proportions from the private face reference supplied for this concept.
-- Premium navy pinstripe three-piece suit, white shirt, gold tie and pocket square, polished brown shoes.
+- Tall, elegant 188 cm executive proportions with a premium navy pinstripe three-piece suit, white shirt, gold tie and pocket square, polished brown shoes.
 - Sophisticated thin-frame glasses with transparent warm yellow-tinted lenses.
+- Clean, stylish buzz cut with a subtle modern taper.
 - Cinematic near-future executive presentation on a dark navy and gold hexagonal pedestal.
 - The concept is AI-generated; the supplied face reference is not stored in this repository.
 
