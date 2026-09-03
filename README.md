@@ -20,6 +20,8 @@
 | `assets/office-map.png` | فایل master باکیفیت برای آرشیو و ویرایش، در سایت بارگذاری نمی‌شود |
 | `assets/babak-logo.svg` | لوگوی اختصاصی Babak AI Company |
 | `assets/characters/ceo/` | کانسپت سه‌بعدی، عکس پرسنلی synthetic مدیرعامل بابک و مشخصات ریگ/کنترل‌پذیری برای مرحلهٔ مدل‌سازی |
+| `assets/characters/ceo/babak-moradvand-personnel-photo.webp` | نسخهٔ اصلی وب با کیفیت بالا و حجم کم؛ سایت از این فایل استفاده می‌کند |
+| `assets/characters/ceo/babak-moradvand-personnel-photo.png` | نسخهٔ سازگار برای لینک‌های قدیمی/دانلود؛ سایت آن را بارگذاری نمی‌کند |
 | `hr/index.html` | دایرکتوری گرافیکی ۷۲ پرسنل با جست‌وجو و فیلتر |
 | `hr/data/employees.json` | دادهٔ ساختاریافته برای داشبورد یا ورود بعدی به Supabase |
 | `hr/data/employees.csv` | خروجی قابل بررسی در Excel |
