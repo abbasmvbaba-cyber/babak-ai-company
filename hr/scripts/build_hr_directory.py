@@ -36,16 +36,16 @@ html_doc = f'''<!doctype html>
   <div class="notice"><span>◈</span><div><strong>محیط نمونه‌سازی HR</strong> — همهٔ رکوردها ساختگی هستند. کدهای ملی عمداً غیرمعتبرند و تصویرها آواتار برداری‌اند؛ هیچ اطلاعات هویتی واقعی را در رپوی عمومی ذخیره نکنید.</div></div>
   <section class="hero"><div><div class="eyebrow">HR DIRECTORY / 01</div><h1>دایرکتوری ۷۲ نفره شرکت</h1><p>فهرست مرکزی پرسنل، دپارتمان‌ها و لینک ورود به پروندهٔ اختصاصی هر نفر</p></div><div class="updated">آخرین تولید داده: <b>{html.escape(data['generated_at'])}</b><br>نسخهٔ نمایشی قابل اتصال به Supabase</div></section>
   <section class="statgrid">
-    <div class="stat" style="--accent:var(--cyan)"><div class="statlabel">کل پرسنل</div><div class="statvalue">۷۲</div><div class="statfoot">رکورد فعال نمونه</div></div>
-    <div class="stat" style="--accent:var(--pink)"><div class="statlabel">خانم‌ها</div><div class="statvalue">۵۸</div><div class="statfoot">۸۰٫۶٪ از شرکت</div></div>
-    <div class="stat" style="--accent:#7ab9ff"><div class="statlabel">آقایان</div><div class="statvalue">۱۴</div><div class="statfoot">۱۹٫۴٪ از شرکت</div></div>
-    <div class="stat" style="--accent:var(--amber)"><div class="statlabel">دارای دکتری</div><div class="statvalue">۴</div><div class="statfoot">رکورد تحصیلی نمونه</div></div>
+    <div class="stat" style="--accent:var(--cyan)"><div class="statlabel">کل پرسنل</div><div class="statvalue">{counts['total']}</div><div class="statfoot">رکورد فعال نمونه</div></div>
+    <div class="stat" style="--accent:var(--pink)"><div class="statlabel">خانم‌ها</div><div class="statvalue">{counts['female']}</div><div class="statfoot">{counts['female'] / counts['total'] * 100:.1f}٪ از شرکت</div></div>
+    <div class="stat" style="--accent:#7ab9ff"><div class="statlabel">آقایان</div><div class="statvalue">{counts['male']}</div><div class="statfoot">{counts['male'] / counts['total'] * 100:.1f}٪ از شرکت</div></div>
+    <div class="stat" style="--accent:var(--amber)"><div class="statlabel">دارای دکتری</div><div class="statvalue">{counts['doctorates']}</div><div class="statfoot">رکورد تحصیلی نمونه</div></div>
   </section>
   <div class="distribution">
-    <div class="dist" style="--accent:var(--purple)"><i class="dot"></i><b>۱۴ نفر</b> · ۲۰ تا ۲۴ سال</div>
-    <div class="dist" style="--accent:var(--cyan)"><i class="dot"></i><b>۳۶ نفر</b> · ۲۵ تا ۳۰ سال</div>
-    <div class="dist" style="--accent:var(--pink)"><i class="dot"></i><b>۲۲ نفر</b> · ۳۱ سال به بالا</div>
-    <div class="dist" style="--accent:var(--green)"><i class="dot"></i><b>۱۲ دپارتمان</b> · متصل به ۸ تیم Agency</div>
+    <div class="dist" style="--accent:var(--purple)"><i class="dot"></i><b>{counts['age_20_24']} نفر</b> · ۲۰ تا ۲۴ سال</div>
+    <div class="dist" style="--accent:var(--cyan)"><i class="dot"></i><b>{counts['age_25_30']} نفر</b> · ۲۵ تا ۳۰ سال</div>
+    <div class="dist" style="--accent:var(--pink)"><i class="dot"></i><b>{counts['age_31_plus']} نفر</b> · ۳۱ سال به بالا</div>
+    <div class="dist" style="--accent:var(--green)"><i class="dot"></i><b>{len(departments)} دپارتمان</b> · متصل به ۸ تیم Agency</div>
   </div>
   <section class="panel">
     <div class="filters">

@@ -163,7 +163,8 @@ DEPARTMENTS = [
     },
 ]
 
-# 14 male positions distributed through the organization; all other records are female.
+# 14 male positions distributed through the organization; the CEO override below
+# adds Babak Moradvand as the fifteenth male record.
 MALE_POSITIONS = {2, 5, 10, 16, 23, 28, 33, 39, 44, 50, 54, 57, 62, 66}
 
 # Exactly 22 leadership/senior records are placed in the 31+ age bucket.
@@ -657,6 +658,31 @@ def build_employees() -> list[dict]:
         }
         record["base_salary_display"] = f"{record['base_salary_toman']:,}".translate(str.maketrans("0123456789", "۰۱۲۳۴۵۶۷۸۹"))
         record["years_with_company"] = max(0, 1405 - int(record["hire_date"].split("/")[0]))
+        if number == 1:
+            # CEO details supplied by the company owner. Unspecified identity fields
+            # remain explicitly unfilled instead of being copied from the old demo row.
+            record.update({
+                "full_name": "بابک مرادوند",
+                "first_name": "بابک",
+                "family": "مرادوند",
+                "gender": "مرد",
+                "age": 38,
+                "age_bucket": "۳۱ سال به بالا",
+                "birth_date_gregorian": "1987-09-21",
+                "birth_date_jalali": "1366/06/30",
+                "father_name": "ثبت نشده",
+                "birth_place": "ثبت نشده",
+                "hire_date": "ثبت نشده",
+                "years_with_company": 0,
+                "education": [
+                    {"level": "دیپلم", "field": "ریاضی و فیزیک", "institution": "ثبت نشده", "start_date": "ثبت نشده", "issue_date": "ثبت نشده", "status": "اخذ شده"},
+                    {"level": "کارشناسی", "field": "مهندسی نفت — بهره‌برداری", "institution": "ثبت نشده", "start_date": "ثبت نشده", "issue_date": "ثبت نشده", "status": "اخذ شده"},
+                    {"level": "کارشناسی ارشد", "field": "مدیریت بازرگانی — بازاریابی", "institution": "ثبت نشده", "start_date": "ثبت نشده", "issue_date": "ثبت نشده", "status": "اخذ شده"},
+                    {"level": "دکتری", "field": "—", "institution": "—", "start_date": "—", "issue_date": "ندارد", "status": "ندارد"},
+                ],
+                "family_info": {"marital_status": "مجرد", "spouse_name": "ندارد", "children_count": 0},
+                "work_email": "ceo@babak-ai.company",
+            })
         employees.append(record)
     # Second pass attaches the department head as a supervisor.
     heads = {}
@@ -666,8 +692,8 @@ def build_employees() -> list[dict]:
     for employee in employees:
         employee["supervisor"] = "هیئت‌مدیره — دادهٔ نمونه" if employee["level"] == "executive" else heads.get(employee["department"], "مدیر واحد — نمونه")
     assert len(employees) == 72
-    assert sum(e["gender"] == "زن" for e in employees) == 58
-    assert sum(e["gender"] == "مرد" for e in employees) == 14
+    assert sum(e["gender"] == "زن" for e in employees) == 57
+    assert sum(e["gender"] == "مرد" for e in employees) == 15
     assert sum(e["age"] < 25 for e in employees) == 14
     assert sum(25 <= e["age"] <= 30 for e in employees) == 36
     assert sum(e["age"] > 30 for e in employees) == 22
