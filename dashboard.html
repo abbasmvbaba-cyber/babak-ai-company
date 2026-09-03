@@ -571,7 +571,6 @@
       switchView(item.dataset.view, item.dataset.section);
     }));
 
-    const initials = name => String(name).trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('');
     const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
     const personPhoto = person => 'hr/employees/' + encodeURIComponent(person.employee_id) + '/photo.svg';
     const byDepartment = name => employeeData.filter(person => person.department === name);
