@@ -90,4 +90,28 @@ render();
 </body></html>
 '''
 (ROOT / "index.html").write_text(html_doc, encoding="utf-8")
-print(f"built {ROOT / 'index.html'} with {len(employees)} records")
+
+# A plain Markdown list is useful for HR review and remains readable without JavaScript.
+list_lines = [
+    "# فهرست شرکتی ۷۲ پرسنل — دادهٔ نمایشی",
+    "",
+    "> همهٔ رکوردها ساختگی‌اند؛ کد ملی‌ها معتبر نیستند و جزئیات هر نفر در پوشهٔ اختصاصی او قرار دارد.",
+    "",
+    "| ردیف | شماره پرسنلی | نام و نام خانوادگی | جنسیت | سن | دپارتمان | سمت | استخدام | پایه حقوق (تومان) | تأهل | پرونده |",
+    "|---:|---|---|---|---:|---|---|---|---:|---|---|",
+]
+for index, e in enumerate(employees, 1):
+    list_lines.append(
+        f"| {index} | {e['employee_id']} | {e['full_name']} | {e['gender']} | {e['age']} | {e['department']} | {e['role']} | {e['hire_date']} | {e['base_salary_toman']:,} | {e['family_info']['marital_status']} | [باز کردن](../employees/{e['employee_id']}/index.html) |"
+    )
+list_lines += [
+    "",
+    "## توزیع داده",
+    "",
+    f"- کل: **{counts['total']}** نفر",
+    f"- خانم: **{counts['female']}** نفر؛ آقا: **{counts['male']}** نفر",
+    f"- ۲۰ تا ۲۴ سال: **{counts['age_20_24']}** نفر؛ ۲۵ تا ۳۰ سال: **{counts['age_25_30']}** نفر؛ ۳۱ سال به بالا: **{counts['age_31_plus']}** نفر",
+    f"- دارای دکتری: **{counts['doctorates']}** نفر",
+]
+(ROOT / "data" / "employees-list.md").write_text("\n".join(list_lines) + "\n", encoding="utf-8")
+print(f"built {ROOT / 'index.html'} and {ROOT / 'data/employees-list.md'} with {len(employees)} records")
