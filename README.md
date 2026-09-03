@@ -32,8 +32,9 @@
 3. داشبورد SPA با Overview، People و Departments ✅
 4. نمایش People به تفکیک دپارتمان با وضعیت نمونهٔ قرمز/سبز ✅
 5. HR Personnel Documents با بازشدن پرونده و سند در همان پوسته ✅
-6. AI Command Center ثابت در همهٔ نماها ✅
-7. اتصال Supabase، Auth، Realtime و PWA در گام بعد
+6. AI Command Center ثابت در همهٔ نماها، با تاریخچهٔ چت بیشتر و ارسال Message/Task/Request به چند پرسنل با mention ✅
+7. در صورت نبودن mention، AI پاسخ مستقیم و context-aware می‌دهد ✅
+8. اتصال Supabase، Auth، Realtime و PWA در گام بعد
 
 ## اجرای آنلاین
 نسخهٔ GitHub Pages در این آدرس در دسترس است:
