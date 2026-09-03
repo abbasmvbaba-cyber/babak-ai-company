@@ -321,12 +321,14 @@ def world_positions(bones, nodes):
     return result
 
 
-def make_skinned_mesh(builder: GLBBuilder, primitives, skin_index, name):
+def make_skinned_mesh(builder: GLBBuilder, primitives, skin_index, name, joint_map=None):
     gltf_primitives = []
     for primitive in primitives:
         position = builder.add_accessor(primitive.positions, FLOAT, "VEC3", ARRAY_BUFFER, name=f"{name}_{primitive.material}_positions")
         normal = builder.add_accessor(primitive.normals, FLOAT, "VEC3", ARRAY_BUFFER, name=f"{name}_{primitive.material}_normals")
-        joints = builder.add_accessor(primitive.joints, UNSIGNED_SHORT, "VEC4", ARRAY_BUFFER, name=f"{name}_{primitive.material}_joints")
+        # JOINTS_0 stores indices into skins[skin_index].joints, not glTF node indices.
+        joint_values = primitive.joints if joint_map is None else [[joint_map.get(value, 0) for value in row] for row in primitive.joints]
+        joints = builder.add_accessor(joint_values, UNSIGNED_SHORT, "VEC4", ARRAY_BUFFER, name=f"{name}_{primitive.material}_joints")
         weights = builder.add_accessor(primitive.weights, FLOAT, "VEC4", ARRAY_BUFFER, name=f"{name}_{primitive.material}_weights")
         index_component = UNSIGNED_SHORT if len(primitive.positions) < 65536 else UNSIGNED_INT
         indices = builder.add_accessor(primitive.indices, index_component, "SCALAR", ELEMENT_ARRAY_BUFFER, name=f"{name}_{primitive.material}_indices")
@@ -440,6 +442,8 @@ def main():
 
     world_by_index = world_positions(bones, builder.gltf["nodes"])
     positions = {name: world_by_index[index] for name, index in bones.items()}
+    # glTF skin weights reference the ordinal slot in skins[0].joints.
+    skin_joint_indices = {node_index: slot for slot, node_index in enumerate(bones.values())}
 
     # Build the skinned body, grouped by material.
     body_primitives = {name: SkinnedPrimitive(material_id) for name, material_id in material_ids.items()}
@@ -487,7 +491,7 @@ def main():
     add_box(gold, [0.0, 1.70, 0.214], [0.035, 0.018, 0.014], bones["Head"])
     add_box(gold, [0.0, 1.70, 0.205], [0.23, 0.012, 0.012], bones["Head"])
 
-    body_mesh = make_skinned_mesh(builder, [primitive for primitive in body_primitives.values() if primitive.positions], 0, "Babak_Body_Skinned")
+    body_mesh = make_skinned_mesh(builder, [primitive for primitive in body_primitives.values() if primitive.positions], 0, "Babak_Body_Skinned", joint_map=skin_joint_indices)
     body_node = builder.add_node({"name": "Body_Skinned", "mesh": body_mesh, "skin": 0, "extras": {"role": "rigged body and suit"}})
     builder.gltf["nodes"][root]["children"].append(body_node)
 
@@ -514,7 +518,8 @@ def main():
         target_arrays.append(deltas)
     face_position = builder.add_accessor(face_primitive.positions, FLOAT, "VEC3", ARRAY_BUFFER, name="Face_POSITION")
     face_normal = builder.add_accessor(face_primitive.normals, FLOAT, "VEC3", ARRAY_BUFFER, name="Face_NORMAL")
-    face_joints = builder.add_accessor(face_primitive.joints, UNSIGNED_SHORT, "VEC4", ARRAY_BUFFER, name="Face_JOINTS_0")
+    face_joint_values = [[skin_joint_indices.get(value, 0) for value in row] for row in face_primitive.joints]
+    face_joints = builder.add_accessor(face_joint_values, UNSIGNED_SHORT, "VEC4", ARRAY_BUFFER, name="Face_JOINTS_0")
     face_weights = builder.add_accessor(face_primitive.weights, FLOAT, "VEC4", ARRAY_BUFFER, name="Face_WEIGHTS_0")
     face_indices = builder.add_accessor(face_primitive.indices, UNSIGNED_SHORT, "SCALAR", ELEMENT_ARRAY_BUFFER, name="Face_INDICES")
     morph_accessors = [builder.add_accessor(deltas, FLOAT, "VEC3", ARRAY_BUFFER, name=f"Face_MORPH_{name}") for name, deltas in zip(target_names, target_arrays)]
