@@ -161,11 +161,12 @@
     .person-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; padding: 10px; }
     .person-node { min-width: 0; padding: 8px 5px 7px; border: 1px solid transparent; border-radius: 10px; text-align: center; cursor: pointer; transition: .18s ease; }
     .person-node:hover { border-color: rgba(85,234,215,.25); background: rgba(43,75,110,.18); transform: translateY(-1px); }
-    .person-avatar { position: relative; width: 35px; height: 35px; display: grid; place-items: center; margin: 0 auto 6px; border: 1px solid rgba(117,168,255,.26); border-radius: 50%; color: #dffaff; background: linear-gradient(135deg, #1a4960, #3a2862); font-size: 10px; font-weight: 800; }
-    .person-avatar.working { border-color: rgba(255,119,152,.33); background: linear-gradient(135deg, #4a2345, #24345c); }
-    .person-avatar.available { border-color: rgba(92,230,165,.34); background: linear-gradient(135deg, #16493e, #223c60); }
+    .person-avatar-wrap { position: relative; width: 35px; height: 35px; display: block; margin: 0 auto 6px; }
+    .person-avatar { display: block; width: 35px; height: 35px; border: 1px solid rgba(117,168,255,.26); border-radius: 50%; object-fit: cover; background: #14223a; }
+    .person-avatar-wrap.working .person-avatar { border-color: rgba(255,119,152,.45); }
+    .person-avatar-wrap.available .person-avatar { border-color: rgba(92,230,165,.45); }
     .head-dot { position: absolute; top: -3px; right: 1px; width: 9px; height: 9px; border: 2px solid #101b30; border-radius: 50%; background: var(--danger); box-shadow: 0 0 8px var(--danger); }
-    .person-avatar.available .head-dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
+    .person-avatar-wrap.available .head-dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
     .person-name { overflow: hidden; color: var(--ink); font-size: 9px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
     .person-role { overflow: hidden; margin-top: 2px; color: var(--quiet); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
     .department-empty { grid-column: 1 / -1; padding: 30px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); text-align: center; font-size: 11px; }
@@ -207,7 +208,7 @@
     .document-table td { padding: 10px 12px; border-bottom: 1px solid rgba(156,187,231,.08); color: var(--muted); font-size: 9px; vertical-align: middle; }
     .document-table tr:hover td { background: rgba(35,63,96,.16); }
     .document-person { display: flex; align-items: center; gap: 8px; min-width: 145px; }
-    .document-initials { width: 27px; height: 27px; display: grid; place-items: center; border: 1px solid rgba(85,234,215,.25); border-radius: 8px; color: var(--cyan); background: linear-gradient(135deg,#143c4b,#312358); font-size: 8px; font-weight: 800; }
+    .document-initials { width: 27px; height: 27px; display: block; object-fit: cover; border: 1px solid rgba(85,234,215,.25); border-radius: 8px; background: #14223a; }
     .document-person b { display: block; color: var(--ink); font-size: 10px; }
     .document-person small { display: block; margin-top: 1px; color: var(--cyan); font-size: 8px; }
     .document-links { display: flex; flex-wrap: wrap; gap: 4px; min-width: 310px; }
@@ -337,7 +338,7 @@
     .document-viewer-kicker { color: var(--cyan); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
     .document-viewer-meta { margin-top: 3px; color: var(--muted); font-size: 10px; }
     .document-profile-hero { display: flex; align-items: center; gap: 13px; padding: 13px; border: 1px solid var(--line); border-radius: 13px; background: linear-gradient(145deg, rgba(25,47,78,.55), rgba(9,17,31,.48)); }
-    .document-profile-avatar { width: 46px; height: 46px; display: grid; place-items: center; flex: none; border: 1px solid rgba(85,234,215,.32); border-radius: 13px; color: var(--cyan); background: linear-gradient(135deg,#143c4b,#312358); font-size: 13px; font-weight: 800; }
+    .document-profile-avatar { width: 46px; height: 46px; display: block; flex: none; object-fit: cover; border: 1px solid rgba(85,234,215,.32); border-radius: 13px; background: #14223a; }
     .document-profile-hero strong { display: block; color: var(--ink); font-size: 15px; }
     .document-profile-hero span { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; }
     .document-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-top: 11px; }
@@ -572,6 +573,7 @@
 
     const initials = name => String(name).trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('');
     const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const personPhoto = person => 'hr/employees/' + encodeURIComponent(person.employee_id) + '/photo.svg';
     const byDepartment = name => employeeData.filter(person => person.department === name);
 
     function renderPeople() {
@@ -591,7 +593,7 @@
       }).filter(group => group.people.length);
       const grid = document.getElementById('peopleDepartmentGrid');
       if (!list.length) { grid.innerHTML = '<div class="department-empty">No people match this search or filter.</div>'; return; }
-      grid.innerHTML = list.map(group => `<article class="department-people-card"><header class="department-people-head"><div><strong>${escapeHtml(group.dept.name)}</strong><small>${escapeHtml(group.dept.team)} · ${escapeHtml(group.dept.focus)}</small></div><span class="department-count">${group.people.length} shown</span></header><div class="person-grid">${group.people.map(person => `<button class="person-node" data-person="${escapeHtml(person.employee_id)}" title="${escapeHtml(person.full_name)} · ${escapeHtml(person.status_label)}"><span class="person-avatar ${person.work_status}"><i class="head-dot"></i>${escapeHtml(initials(person.full_name))}</span><span class="person-name">${escapeHtml(person.full_name)}</span><span class="person-role">${escapeHtml(person.role)}</span></button>`).join('')}</div></article>`).join('');
+      grid.innerHTML = list.map(group => `<article class="department-people-card"><header class="department-people-head"><div><strong>${escapeHtml(group.dept.name)}</strong><small>${escapeHtml(group.dept.team)} · ${escapeHtml(group.dept.focus)}</small></div><span class="department-count">${group.people.length} shown</span></header><div class="person-grid">${group.people.map(person => `<button class="person-node" data-person="${escapeHtml(person.employee_id)}" title="${escapeHtml(person.full_name)} · ${escapeHtml(person.status_label)}"><span class="person-avatar-wrap ${person.work_status}"><img class="person-avatar" src="${personPhoto(person)}" alt="${escapeHtml(person.full_name)} personnel photo" loading="lazy"><i class="head-dot"></i></span><span class="person-name">${escapeHtml(person.full_name)}</span><span class="person-role">${escapeHtml(person.role)}</span></button>`).join('')}</div></article>`).join('');
       grid.querySelectorAll('.person-node').forEach(node => node.addEventListener('click', () => {
         const person = employeeData.find(item => item.employee_id === node.dataset.person);
         if (person) showToast(person.full_name + ' · ' + person.status_label + ' · ' + person.department);
@@ -625,7 +627,7 @@
       return `<table class="document-viewer-table"><thead><tr><th>Level</th><th>Field</th><th>Institution</th><th>Start</th><th>Issue</th><th>Status</th></tr></thead><tbody>${(person.education || []).map(item => `<tr><td>${escapeHtml(item.level)}</td><td>${escapeHtml(item.field)}</td><td>${escapeHtml(item.institution)}</td><td>${escapeHtml(item.start_date)}</td><td>${escapeHtml(item.issue_date)}</td><td>${escapeHtml(item.status)}</td></tr>`).join('')}</tbody></table>`;
     }
     function viewerHeader(person) {
-      return `<div class="document-profile-hero"><span class="document-profile-avatar">${escapeHtml(initials(person.full_name))}</span><div><strong>${escapeHtml(person.full_name)}</strong><span>${escapeHtml(person.role)} · ${escapeHtml(person.department)} · ${escapeHtml(person.employee_id)}</span></div></div>`;
+      return `<div class="document-profile-hero"><img class="document-profile-avatar" src="${personPhoto(person)}" alt="${escapeHtml(person.full_name)} personnel photo"><div><strong>${escapeHtml(person.full_name)}</strong><span>${escapeHtml(person.role)} · ${escapeHtml(person.department)} · ${escapeHtml(person.employee_id)}</span></div></div>`;
     }
     function documentViewerBody(person, type) {
       const family = person.family_info || { marital_status: '—', spouse_name: '—', children_count: 0 };
@@ -657,7 +659,7 @@
       rows.innerHTML = list.map(person => {
         const base = 'hr/employees/' + encodeURIComponent(person.employee_id) + '/';
         const docs = [['profile','Personnel file','profile.md'],['employment','Employment','documents/employment-record.md'],['education','Education','documents/education-record.md'],['compensation','Compensation','documents/compensation-record.md'],['family','Family','documents/family-record.md'],['checklist','Checklist','documents/document-checklist.md']];
-        return `<tr><td><div class="document-person"><span class="document-initials">${escapeHtml(initials(person.full_name))}</span><div><b>${escapeHtml(person.full_name)}</b><small>${escapeHtml(person.employee_id)}</small></div></div></td><td>${escapeHtml(person.department)}</td><td><div class="document-links">${docs.map(doc => `<a class="document-link" data-open-document data-person="${escapeHtml(person.employee_id)}" data-doc-type="${doc[0]}" href="${base + doc[2]}">${doc[1]}</a>`).join('')}</div></td><td><span class="document-verification">● Pending originals</span></td><td><a class="document-profile" data-open-document data-person="${escapeHtml(person.employee_id)}" data-doc-type="profile" href="${base}index.html">Open profile ↗</a></td></tr>`;
+        return `<tr><td><div class="document-person"><img class="document-initials" src="${personPhoto(person)}" alt="${escapeHtml(person.full_name)} personnel photo" loading="lazy"><div><b>${escapeHtml(person.full_name)}</b><small>${escapeHtml(person.employee_id)}</small></div></div></td><td>${escapeHtml(person.department)}</td><td><div class="document-links">${docs.map(doc => `<a class="document-link" data-open-document data-person="${escapeHtml(person.employee_id)}" data-doc-type="${doc[0]}" href="${base + doc[2]}">${doc[1]}</a>`).join('')}</div></td><td><span class="document-verification">● Pending originals</span></td><td><a class="document-profile" data-open-document data-person="${escapeHtml(person.employee_id)}" data-doc-type="profile" href="${base}index.html">Open profile ↗</a></td></tr>`;
       }).join('');
       rows.querySelectorAll('[data-open-document]').forEach(link => link.addEventListener('click', event => {
         event.preventDefault();
