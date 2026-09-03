@@ -14,7 +14,7 @@
 | فایل | توضیح |
 |------|-------|
 | `index.html` | صفحه‌ی ورود جدید انگلیسی و بدون نیاز به نصب |
-| `dashboard.html` | داشبورد اصلی English با پیش‌نمایش راه‌رفتن CEO در مقیاس واقعی، KPIها و AI Command Center |
+| `dashboard.html` | داشبورد اصلی English با نمای 2.5D کل شرکت، KPIها و AI Command Center |
 | `hr-documents.html` | مسیر سازگار خزانهٔ اسناد HR؛ داخل داشبورد با پوسته و چت باز می‌شود |
 | `assets/office-map.webp` | نسخهٔ بهینه‌شدهٔ وب از نمای سه‌بعدی دفتر شرکت (WebP) |
 | `assets/office-map.png` | فایل master باکیفیت برای آرشیو و ویرایش، در سایت بارگذاری نمی‌شود |
