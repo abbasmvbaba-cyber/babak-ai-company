@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0032",
+  "full_name": "شبنم کمالی",
+  "first_name": "شبنم",
+  "family": "کمالی",
+  "gender": "زن",
+  "age": 30,
+  "age_bucket": "۲۵ تا ۳۰ سال",
+  "birth_date_gregorian": "1996-08-09",
+  "birth_date_jalali": "1375/05/20",
+  "father_name": "حسن",
+  "national_code": "IR-DEMO-000032",
+  "birth_place": "بندرعباس",
+  "department": "تحلیل و هوش تجاری",
+  "agency_team": "Intelligence",
+  "role": "مهندس داده",
+  "level": "senior",
+  "hire_date": "1404/01/09",
+  "base_salary_toman": 75000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "ریاضی و فیزیک",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1390/07/01",
+      "issue_date": "1393/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "علوم داده و هوش تجاری",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1393/07/01",
+      "issue_date": "1397/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "علوم داده و هوش تجاری",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1397/07/01",
+      "issue_date": "1399/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "شهاب",
+    "children_count": 2
+  },
+  "work_email": "employee032@babak-ai.company",
+  "extension": "1032",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۷۵,۰۰۰,۰۰۰",
+  "years_with_company": 1,
+  "supervisor": "سحر آقایی"
+}

@@ -1,0 +1,6 @@
+# Python cache and local tooling
+__pycache__/
+*.py[cod]
+
+# Local preview artifacts
+.DS_Store

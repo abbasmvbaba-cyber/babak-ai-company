@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0015",
+  "full_name": "ترانه شریفی",
+  "first_name": "ترانه",
+  "family": "شریفی",
+  "gender": "زن",
+  "age": 21,
+  "age_bucket": "۲۰ تا ۲۴ سال",
+  "birth_date_gregorian": "2005-07-23",
+  "birth_date_jalali": "1384/05/01",
+  "father_name": "اکبر",
+  "national_code": "IR-DEMO-000015",
+  "birth_place": "ارومیه",
+  "department": "بازاریابی",
+  "agency_team": "Marketing",
+  "role": "کپی‌رایتر",
+  "level": "specialist",
+  "hire_date": "1403/10/25",
+  "base_salary_toman": 41000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "فنی و حرفه‌ای",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1399/07/01",
+      "issue_date": "1402/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "بازاریابی و ارتباطات",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1402/07/01",
+      "issue_date": "در حال تحصیل",
+      "status": "در حال تحصیل"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "مجرد",
+    "spouse_name": "ندارد",
+    "children_count": 0
+  },
+  "work_email": "employee015@babak-ai.company",
+  "extension": "1015",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۴۱,۰۰۰,۰۰۰",
+  "years_with_company": 2,
+  "supervisor": "الینا کاظمی"
+}

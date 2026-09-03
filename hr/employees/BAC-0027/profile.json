@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0027",
+  "full_name": "سمیرا نیک‌نام",
+  "first_name": "سمیرا",
+  "family": "نیک‌نام",
+  "gender": "زن",
+  "age": 27,
+  "age_bucket": "۲۵ تا ۳۰ سال",
+  "birth_date_gregorian": "1999-03-19",
+  "birth_date_jalali": "1377/12/28",
+  "father_name": "مهدی",
+  "national_code": "IR-DEMO-000027",
+  "birth_place": "کرج",
+  "department": "فروش",
+  "agency_team": "Sales",
+  "role": "کارشناس توسعه کسب‌وکار",
+  "level": "specialist",
+  "hire_date": "1403/10/01",
+  "base_salary_toman": 42000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "فنی و حرفه‌ای",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1392/07/01",
+      "issue_date": "1395/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مدیریت بازرگانی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1395/07/01",
+      "issue_date": "1399/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "مدیریت بازرگانی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1399/07/01",
+      "issue_date": "1401/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "مجرد",
+    "spouse_name": "ندارد",
+    "children_count": 0
+  },
+  "work_email": "employee027@babak-ai.company",
+  "extension": "1027",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۴۲,۰۰۰,۰۰۰",
+  "years_with_company": 2,
+  "supervisor": "درسا طاهری"
+}

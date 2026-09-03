@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0005",
+  "full_name": "افسانه کریمی",
+  "first_name": "افسانه",
+  "family": "کریمی",
+  "gender": "زن",
+  "age": 34,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1992-05-07",
+  "birth_date_jalali": "1371/02/18",
+  "father_name": "علی",
+  "national_code": "IR-DEMO-000005",
+  "birth_place": "تبریز",
+  "department": "استراتژی",
+  "agency_team": "Strategy",
+  "role": "مشاور ارشد استراتژی",
+  "level": "senior",
+  "hire_date": "1401/04/09",
+  "base_salary_toman": 71000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "علوم تجربی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1386/07/01",
+      "issue_date": "1389/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مدیریت استراتژیک",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1389/07/01",
+      "issue_date": "1393/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "مدیریت استراتژیک",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1393/07/01",
+      "issue_date": "1395/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "مجرد",
+    "spouse_name": "ندارد",
+    "children_count": 0
+  },
+  "work_email": "employee005@babak-ai.company",
+  "extension": "1005",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۷۱,۰۰۰,۰۰۰",
+  "years_with_company": 4,
+  "supervisor": "آتوسا حسینی"
+}

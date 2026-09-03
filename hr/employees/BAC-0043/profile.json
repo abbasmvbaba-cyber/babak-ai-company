@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0043",
+  "full_name": "کتایون پاکزاد",
+  "first_name": "کتایون",
+  "family": "پاکزاد",
+  "gender": "زن",
+  "age": 44,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1982-03-19",
+  "birth_date_jalali": "1360/12/28",
+  "father_name": "فرامرز",
+  "national_code": "IR-DEMO-000043",
+  "birth_place": "کرج",
+  "department": "مالی",
+  "agency_team": "Managing",
+  "role": "مدیر مالی",
+  "level": "director",
+  "hire_date": "1405/03/10",
+  "base_salary_toman": 98000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "فنی و حرفه‌ای",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1375/07/01",
+      "issue_date": "1378/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "حسابداری و مالی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1378/07/01",
+      "issue_date": "1382/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "حسابداری و مالی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1382/07/01",
+      "issue_date": "1384/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "اشکان",
+    "children_count": 0
+  },
+  "work_email": "employee043@babak-ai.company",
+  "extension": "1043",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۹۸,۰۰۰,۰۰۰",
+  "years_with_company": 0,
+  "supervisor": "کتایون پاکزاد"
+}

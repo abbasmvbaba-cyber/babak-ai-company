@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0009",
+  "full_name": "الناز اکبری",
+  "first_name": "الناز",
+  "family": "اکبری",
+  "gender": "زن",
+  "age": 36,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1990-01-03",
+  "birth_date_jalali": "1368/10/13",
+  "father_name": "داود",
+  "national_code": "IR-DEMO-000009",
+  "birth_place": "یزد",
+  "department": "بازاریابی",
+  "agency_team": "Marketing",
+  "role": "سرپرست SEO",
+  "level": "lead",
+  "hire_date": "1403/04/10",
+  "base_salary_toman": 76000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "علوم تجربی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1383/07/01",
+      "issue_date": "1386/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "بازاریابی و ارتباطات",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1386/07/01",
+      "issue_date": "1390/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "بازاریابی و ارتباطات",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1390/07/01",
+      "issue_date": "1392/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "یونس",
+    "children_count": 0
+  },
+  "work_email": "employee009@babak-ai.company",
+  "extension": "1009",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۷۶,۰۰۰,۰۰۰",
+  "years_with_company": 2,
+  "supervisor": "الینا کاظمی"
+}

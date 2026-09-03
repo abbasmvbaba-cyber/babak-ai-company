@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0025",
+  "full_name": "روژان عباسی",
+  "first_name": "روژان",
+  "family": "عباسی",
+  "gender": "زن",
+  "age": 25,
+  "age_bucket": "۲۵ تا ۳۰ سال",
+  "birth_date_gregorian": "2001-01-03",
+  "birth_date_jalali": "1379/10/14",
+  "father_name": "ابراهیم",
+  "national_code": "IR-DEMO-000025",
+  "birth_place": "یزد",
+  "department": "فروش",
+  "agency_team": "Sales",
+  "role": "کارشناس فروش",
+  "level": "specialist",
+  "hire_date": "1405/03/04",
+  "base_salary_toman": 43000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "علوم تجربی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1394/07/01",
+      "issue_date": "1397/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مدیریت بازرگانی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1397/07/01",
+      "issue_date": "1401/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "مجرد",
+    "spouse_name": "ندارد",
+    "children_count": 0
+  },
+  "work_email": "employee025@babak-ai.company",
+  "extension": "1025",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۴۳,۰۰۰,۰۰۰",
+  "years_with_company": 0,
+  "supervisor": "درسا طاهری"
+}

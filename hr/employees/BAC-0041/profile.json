@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0041",
+  "full_name": "فرزانه صفری",
+  "first_name": "فرزانه",
+  "family": "صفری",
+  "gender": "زن",
+  "age": 26,
+  "age_bucket": "۲۵ تا ۳۰ سال",
+  "birth_date_gregorian": "2000-01-03",
+  "birth_date_jalali": "1378/10/13",
+  "father_name": "مسعود",
+  "national_code": "IR-DEMO-000041",
+  "birth_place": "یزد",
+  "department": "منابع انسانی",
+  "agency_team": "Managing",
+  "role": "کارشناس منابع انسانی",
+  "level": "specialist",
+  "hire_date": "1401/04/18",
+  "base_salary_toman": 42000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "علوم تجربی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1393/07/01",
+      "issue_date": "1396/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مدیریت منابع انسانی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1396/07/01",
+      "issue_date": "1400/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "مجرد",
+    "spouse_name": "ندارد",
+    "children_count": 0
+  },
+  "work_email": "employee041@babak-ai.company",
+  "extension": "1041",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۴۲,۰۰۰,۰۰۰",
+  "years_with_company": 4,
+  "supervisor": "عاطفه معینی"
+}

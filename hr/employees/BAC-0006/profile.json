@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0006",
+  "full_name": "امیر مرادی",
+  "first_name": "امیر",
+  "family": "مرادی",
+  "gender": "مرد",
+  "age": 21,
+  "age_bucket": "۲۰ تا ۲۴ سال",
+  "birth_date_gregorian": "2005-06-15",
+  "birth_date_jalali": "1384/03/25",
+  "father_name": "کاظم",
+  "national_code": "IR-DEMO-000006",
+  "birth_place": "رشت",
+  "department": "استراتژی",
+  "agency_team": "Strategy",
+  "role": "تحلیلگر استراتژی",
+  "level": "specialist",
+  "hire_date": "1402/07/16",
+  "base_salary_toman": 52000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "ادبیات و علوم انسانی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1399/07/01",
+      "issue_date": "1402/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مدیریت استراتژیک",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1402/07/01",
+      "issue_date": "در حال تحصیل",
+      "status": "در حال تحصیل"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "مجرد",
+    "spouse_name": "ندارد",
+    "children_count": 0
+  },
+  "work_email": "employee006@babak-ai.company",
+  "extension": "1006",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۵۲,۰۰۰,۰۰۰",
+  "years_with_company": 3,
+  "supervisor": "آتوسا حسینی"
+}

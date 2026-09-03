@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="تصویر نمونه هلیا بهشتی">
+  <title>تصویر نمونه غیرواقعی — هلیا بهشتی</title>
+  <rect width="512" height="512" rx="48" fill="#28200e"/>
+  <circle cx="256" cy="206" r="144" fill="#ffd166" opacity=".13"/>
+  <path d="M145 232 Q145 105 256 105 Q367 105 367 232 L367 365 Q332 404 256 410 Q180 404 145 365Z" fill="#1c1324"/><path d="M144 247 Q118 322 155 396 Q184 421 203 386 L185 250Z M368 247 Q394 322 357 396 Q328 421 309 386 L327 250Z" fill="#1c1324" opacity=".98"/>
+  <ellipse cx="256" cy="225" rx="93" ry="112" fill="#bc805f"/>
+  <path d="M188 219 Q207 204 226 219" stroke="#3a2530" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <path d="M286 219 Q305 204 324 219" stroke="#3a2530" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="211" cy="229" r="7" fill="#241c2a"/><circle cx="301" cy="229" r="7" fill="#241c2a"/>
+  <path d="M244 239 Q238 267 256 270 Q274 267 268 239" fill="none" stroke="#a46f5c" stroke-width="5"/>
+  <path d="M215 296 Q256 322 297 296" stroke="#7f3f55" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M124 512 Q132 377 256 364 Q380 377 388 512Z" fill="#ffd166"/>
+  <path d="M202 374 Q256 419 310 374" fill="none" stroke="#ffffff" stroke-opacity=".26" stroke-width="8"/>
+  <rect x="24" y="24" width="112" height="38" rx="19" fill="#000" opacity=".3"/>
+  <text x="80" y="50" fill="#fff" font-size="18" font-family="Tahoma,Arial" text-anchor="middle">تصویر نمونه</text>
+  <text x="256" y="464" fill="#fff" font-size="22" font-family="Tahoma,Arial" text-anchor="middle">هلیا · BAC-0059</text>
+</svg>

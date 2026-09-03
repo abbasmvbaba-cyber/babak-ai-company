@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0056",
+  "full_name": "نیکی فرهمند",
+  "first_name": "نیکی",
+  "family": "فرهمند",
+  "gender": "زن",
+  "age": 34,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1992-08-09",
+  "birth_date_jalali": "1371/05/19",
+  "father_name": "منصور",
+  "national_code": "IR-DEMO-000056",
+  "birth_place": "کرمان",
+  "department": "طراحی",
+  "agency_team": "Content",
+  "role": "مدیر طراحی",
+  "level": "director",
+  "hire_date": "1404/01/15",
+  "base_salary_toman": 95000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "ریاضی و فیزیک",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1386/07/01",
+      "issue_date": "1389/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "طراحی تجربه کاربر",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1389/07/01",
+      "issue_date": "1393/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "طراحی تجربه کاربر",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1393/07/01",
+      "issue_date": "1395/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "میلاد",
+    "children_count": 0
+  },
+  "work_email": "employee056@babak-ai.company",
+  "extension": "1056",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۹۵,۰۰۰,۰۰۰",
+  "years_with_company": 1,
+  "supervisor": "نیکی فرهمند"
+}

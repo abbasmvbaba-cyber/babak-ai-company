@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0057",
+  "full_name": "هانیه یزدانی",
+  "first_name": "هانیه",
+  "family": "یزدانی",
+  "gender": "زن",
+  "age": 36,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1990-01-03",
+  "birth_date_jalali": "1368/10/13",
+  "father_name": "مهدی",
+  "national_code": "IR-DEMO-000057",
+  "birth_place": "یزد",
+  "department": "طراحی",
+  "agency_team": "Content",
+  "role": "طراح ارشد UI/UX",
+  "level": "senior",
+  "hire_date": "1403/04/22",
+  "base_salary_toman": 73000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "علوم تجربی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1383/07/01",
+      "issue_date": "1386/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "طراحی تجربه کاربر",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1386/07/01",
+      "issue_date": "1390/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "طراحی تجربه کاربر",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1390/07/01",
+      "issue_date": "1392/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "مهدی",
+    "children_count": 0
+  },
+  "work_email": "employee057@babak-ai.company",
+  "extension": "1057",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۷۳,۰۰۰,۰۰۰",
+  "years_with_company": 2,
+  "supervisor": "نیکی فرهمند"
+}

@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0004",
+  "full_name": "آتوسا حسینی",
+  "first_name": "آتوسا",
+  "family": "حسینی",
+  "gender": "زن",
+  "age": 33,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1993-04-27",
+  "birth_date_jalali": "1372/02/07",
+  "father_name": "محمود",
+  "national_code": "IR-DEMO-000004",
+  "birth_place": "شیراز",
+  "department": "استراتژی",
+  "agency_team": "Strategy",
+  "role": "مدیر استراتژی",
+  "level": "director",
+  "hire_date": "1402/01/02",
+  "base_salary_toman": 100000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "ریاضی و فیزیک",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1387/07/01",
+      "issue_date": "1390/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مدیریت استراتژیک",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1390/07/01",
+      "issue_date": "1394/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "رضا",
+    "children_count": 1
+  },
+  "work_email": "employee004@babak-ai.company",
+  "extension": "1004",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۱۰۰,۰۰۰,۰۰۰",
+  "years_with_company": 3,
+  "supervisor": "آتوسا حسینی"
+}

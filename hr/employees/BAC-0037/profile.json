@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0037",
+  "full_name": "عاطفه معینی",
+  "first_name": "عاطفه",
+  "family": "معینی",
+  "gender": "زن",
+  "age": 43,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1983-05-07",
+  "birth_date_jalali": "1362/02/17",
+  "father_name": "حسین",
+  "national_code": "IR-DEMO-000037",
+  "birth_place": "تبریز",
+  "department": "منابع انسانی",
+  "agency_team": "Managing",
+  "role": "مدیر منابع انسانی",
+  "level": "director",
+  "hire_date": "1405/03/04",
+  "base_salary_toman": 101000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "علوم تجربی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1377/07/01",
+      "issue_date": "1380/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مدیریت منابع انسانی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1380/07/01",
+      "issue_date": "1384/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "مدیریت منابع انسانی",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1384/07/01",
+      "issue_date": "1386/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "شهاب",
+    "children_count": 2
+  },
+  "work_email": "employee037@babak-ai.company",
+  "extension": "1037",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۱۰۱,۰۰۰,۰۰۰",
+  "years_with_company": 0,
+  "supervisor": "عاطفه معینی"
+}

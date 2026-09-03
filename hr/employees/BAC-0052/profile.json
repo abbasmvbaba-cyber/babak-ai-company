@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0052",
+  "full_name": "نرگس فراهانی",
+  "first_name": "نرگس",
+  "family": "فراهانی",
+  "gender": "زن",
+  "age": 26,
+  "age_bucket": "۲۵ تا ۳۰ سال",
+  "birth_date_gregorian": "2000-04-27",
+  "birth_date_jalali": "1379/02/09",
+  "father_name": "صمد",
+  "national_code": "IR-DEMO-000052",
+  "birth_place": "شیراز",
+  "department": "توسعه محصول",
+  "agency_team": "Research",
+  "role": "توسعه‌دهنده Front-end",
+  "level": "specialist",
+  "hire_date": "1402/01/14",
+  "base_salary_toman": 60000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "ریاضی و فیزیک",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1394/07/01",
+      "issue_date": "1397/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "مهندسی کامپیوتر و محصول",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1397/07/01",
+      "issue_date": "1401/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "علی‌رضا",
+    "children_count": 0
+  },
+  "work_email": "employee052@babak-ai.company",
+  "extension": "1052",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۶۰,۰۰۰,۰۰۰",
+  "years_with_company": 3,
+  "supervisor": "مهشید اسماعیلی"
+}

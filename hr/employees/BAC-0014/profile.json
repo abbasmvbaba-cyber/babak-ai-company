@@ -1,0 +1,69 @@
+{
+  "employee_id": "BAC-0014",
+  "full_name": "پگاه رستمی",
+  "first_name": "پگاه",
+  "family": "رستمی",
+  "gender": "زن",
+  "age": 38,
+  "age_bucket": "۳۱ سال به بالا",
+  "birth_date_gregorian": "1988-06-15",
+  "birth_date_jalali": "1367/03/26",
+  "father_name": "یوسف",
+  "national_code": "IR-DEMO-000014",
+  "birth_place": "سنندج",
+  "department": "بازاریابی",
+  "agency_team": "Marketing",
+  "role": "مدیر کمپین",
+  "level": "lead",
+  "hire_date": "1404/07/18",
+  "base_salary_toman": 70000000,
+  "education": [
+    {
+      "level": "دیپلم",
+      "field": "ادبیات و علوم انسانی",
+      "institution": "دبیرستان نمونه ایرانیان",
+      "start_date": "1382/07/01",
+      "issue_date": "1385/03/15",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی",
+      "field": "بازاریابی و ارتباطات",
+      "institution": "دانشگاه نمونه ایرانیان",
+      "start_date": "1385/07/01",
+      "issue_date": "1389/06/20",
+      "status": "اخذ شده"
+    },
+    {
+      "level": "کارشناسی ارشد",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    },
+    {
+      "level": "دکتری",
+      "field": "—",
+      "institution": "—",
+      "start_date": "—",
+      "issue_date": "ندارد",
+      "status": "ندارد"
+    }
+  ],
+  "family_info": {
+    "marital_status": "متأهل",
+    "spouse_name": "داریوش",
+    "children_count": 1
+  },
+  "work_email": "employee014@babak-ai.company",
+  "extension": "1014",
+  "status": "فعال — نمونه",
+  "employment_type": "تمام‌وقت",
+  "synthetic_demo": true,
+  "avatar_file": "photo.svg",
+  "doctorate": false,
+  "base_salary_display": "۷۰,۰۰۰,۰۰۰",
+  "years_with_company": 1,
+  "supervisor": "الینا کاظمی"
+}
