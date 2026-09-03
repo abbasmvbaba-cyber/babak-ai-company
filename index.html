@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>کمپانی هوش مصنوعی بابک</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: "Segoe UI", Tahoma, system-ui, sans-serif;
+      background: radial-gradient(circle at 30% 20%, #1a1a2e, #0b0d17 70%);
+      color:#eaeaf5; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    }
+    .card {
+      text-align:center; padding:48px 40px; max-width:520px; width:90%;
+      border-radius:24px; background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 20px 60px rgba(0,0,0,.5); backdrop-filter: blur(8px);
+    }
+    .logo {
+      width:76px; height:76px; margin:0 auto 18px; border-radius:18px;
+      display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,#6d5cff,#a855f7);
+      font-size:36px; font-weight:800;
+    }
+    h1 { font-size:26px; margin-bottom:8px; letter-spacing:.5px; }
+    .en { color:#8b8bb2; font-size:13px; margin-bottom:30px; }
+    .status {
+      display:inline-flex; align-items:center; gap:8px; padding:10px 18px;
+      border-radius:30px; background:rgba(80,220,150,.12);
+      color:#5ee6a3; font-size:14px; margin-bottom:30px;
+    }
+    .dot { width:9px; height:9px; border-radius:50%; background:#5ee6a3; box-shadow:0 0 10px #5ee6a3; animation:blink 1.2s infinite; }
+    @keyframes blink { 50%{opacity:.3} }
+    .btn {
+      display:inline-block; padding:14px 34px; border-radius:14px; font-size:16px;
+      background:linear-gradient(135deg,#6d5cff,#a855f7); color:#fff; text-decoration:none;
+      font-weight:600; box-shadow:0 8px 24px rgba(109,92,255,.4); transition:.2s;
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .meta { margin-top:26px; font-size:12px; color:#7a7a9c; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">ب</div>
+    <h1>کمپانی هوش مصنوعی بابک</h1>
+    <div class="en">Babak AI Company</div>
+    <div class="status"><span class="dot"></span> سیستم آماده است — بدون نیاز به نصب</div>
+    <a class="btn" href="#">ورود به سامانه</a>
+    <div class="meta">✅ در حال راه‌اندازی GitHub Pages — به‌زودی با یک آدرس مستقیم باز می‌شود</div>
+  </div>
+</body>
+</html>
