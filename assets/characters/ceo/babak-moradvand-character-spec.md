@@ -2,10 +2,13 @@
 
 **Character ID:** `BAC-0001`  
 **Role:** Chief Executive Officer  
-**Status:** Concept render v2 — not yet rigged  
+**Status:** Rigged GLB technical prototype — final likeness and VRM export pending<br>
 **Concept image:** `babak-moradvand-3d-concept.png`
 
-**Personnel photo:** `babak-moradvand-personnel-photo.webp` — approved synthetic portrait used by HR and Company OS
+**Personnel photo:** `babak-moradvand-personnel-photo.webp` — approved synthetic portrait used by HR and Company OS<br>
+**Rigged model:** `babak-moradvand-rigged.glb`<br>
+**Rig manifest:** `babak-moradvand-rig-manifest.json`<br>
+**Runtime contract:** `babak-moradvand-rig-runtime.js`
 
 ## Visual lock
 

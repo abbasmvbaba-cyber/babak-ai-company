@@ -1,0 +1,255 @@
+{
+  "character_id": "BAC-0001",
+  "name": "Babak Moradvand",
+  "role": "Chief Executive Officer",
+  "height_cm": 188,
+  "asset": "babak-moradvand-rigged.glb",
+  "runtime": "babak-moradvand-rig-runtime.js",
+  "asset_type": "rigged-glb-prototype",
+  "status": "prototype-rigged",
+  "vrm_status": "export-pending",
+  "generated_without_install": true,
+  "skeleton": [
+    {
+      "name": "Hips",
+      "parent": null,
+      "humanoid": "hips"
+    },
+    {
+      "name": "Spine",
+      "parent": "Hips",
+      "humanoid": "spine"
+    },
+    {
+      "name": "Chest",
+      "parent": "Spine",
+      "humanoid": "chest"
+    },
+    {
+      "name": "Neck",
+      "parent": "Chest",
+      "humanoid": "neck"
+    },
+    {
+      "name": "Head",
+      "parent": "Neck",
+      "humanoid": "head"
+    },
+    {
+      "name": "Jaw",
+      "parent": "Head",
+      "humanoid": "jaw"
+    },
+    {
+      "name": "LeftEye",
+      "parent": "Head",
+      "humanoid": "leftEye"
+    },
+    {
+      "name": "RightEye",
+      "parent": "Head",
+      "humanoid": "rightEye"
+    },
+    {
+      "name": "LeftShoulder",
+      "parent": "Chest",
+      "humanoid": "leftShoulder"
+    },
+    {
+      "name": "LeftUpperArm",
+      "parent": "LeftShoulder",
+      "humanoid": "leftUpperArm"
+    },
+    {
+      "name": "LeftLowerArm",
+      "parent": "LeftUpperArm",
+      "humanoid": "leftLowerArm"
+    },
+    {
+      "name": "LeftHand",
+      "parent": "LeftLowerArm",
+      "humanoid": "leftHand"
+    },
+    {
+      "name": "RightShoulder",
+      "parent": "Chest",
+      "humanoid": "rightShoulder"
+    },
+    {
+      "name": "RightUpperArm",
+      "parent": "RightShoulder",
+      "humanoid": "rightUpperArm"
+    },
+    {
+      "name": "RightLowerArm",
+      "parent": "RightUpperArm",
+      "humanoid": "rightLowerArm"
+    },
+    {
+      "name": "RightHand",
+      "parent": "RightLowerArm",
+      "humanoid": "rightHand"
+    },
+    {
+      "name": "LeftUpperLeg",
+      "parent": "Hips",
+      "humanoid": "leftUpperLeg"
+    },
+    {
+      "name": "LeftLowerLeg",
+      "parent": "LeftUpperLeg",
+      "humanoid": "leftLowerLeg"
+    },
+    {
+      "name": "LeftFoot",
+      "parent": "LeftLowerLeg",
+      "humanoid": "leftFoot"
+    },
+    {
+      "name": "LeftToes",
+      "parent": "LeftFoot",
+      "humanoid": "leftToes"
+    },
+    {
+      "name": "RightUpperLeg",
+      "parent": "Hips",
+      "humanoid": "rightUpperLeg"
+    },
+    {
+      "name": "RightLowerLeg",
+      "parent": "RightUpperLeg",
+      "humanoid": "rightLowerLeg"
+    },
+    {
+      "name": "RightFoot",
+      "parent": "RightLowerLeg",
+      "humanoid": "rightFoot"
+    },
+    {
+      "name": "RightToes",
+      "parent": "RightFoot",
+      "humanoid": "rightToes"
+    }
+  ],
+  "ik_chains": {
+    "left_arm": [
+      "LeftShoulder",
+      "LeftUpperArm",
+      "LeftLowerArm",
+      "LeftHand"
+    ],
+    "right_arm": [
+      "RightShoulder",
+      "RightUpperArm",
+      "RightLowerArm",
+      "RightHand"
+    ],
+    "left_leg": [
+      "Hips",
+      "LeftUpperLeg",
+      "LeftLowerLeg",
+      "LeftFoot"
+    ],
+    "right_leg": [
+      "Hips",
+      "RightUpperLeg",
+      "RightLowerLeg",
+      "RightFoot"
+    ]
+  },
+  "look_at": {
+    "neck_bone": "Neck",
+    "head_bone": "Head",
+    "target_space": "world",
+    "runtime_solver": "yaw-pitch clamp"
+  },
+  "blend_shapes": [
+    "mouthOpen",
+    "smile",
+    "blinkLeft",
+    "blinkRight"
+  ],
+  "actions": [
+    {
+      "name": "idle",
+      "duration_seconds": 2.0,
+      "loop": true,
+      "description": "Subtle breathing and executive idle posture"
+    },
+    {
+      "name": "walk",
+      "duration_seconds": 1.2,
+      "loop": true,
+      "description": "Looping human locomotion cycle"
+    },
+    {
+      "name": "sit",
+      "duration_seconds": 1.6,
+      "loop": false,
+      "description": "Controlled sit-down into an executive chair pose"
+    },
+    {
+      "name": "stand",
+      "duration_seconds": 1.6,
+      "loop": false,
+      "description": "Rise from seated pose to neutral standing"
+    },
+    {
+      "name": "look_at",
+      "duration_seconds": 2.0,
+      "loop": false,
+      "description": "Head, neck and eye target-tracking preview; runtime IK/look-at can override it"
+    },
+    {
+      "name": "talk",
+      "duration_seconds": 1.0,
+      "loop": true,
+      "description": "Jaw and facial blendshape speech preview"
+    },
+    {
+      "name": "listen",
+      "duration_seconds": 1.6,
+      "loop": false,
+      "description": "Attentive listening posture"
+    },
+    {
+      "name": "wave",
+      "duration_seconds": 1.8,
+      "loop": false,
+      "description": "Friendly executive wave"
+    },
+    {
+      "name": "drink_coffee",
+      "duration_seconds": 2.4,
+      "loop": false,
+      "description": "Right-hand mug interaction with head and face response"
+    },
+    {
+      "name": "point",
+      "duration_seconds": 1.5,
+      "loop": false,
+      "description": "Directional pointing gesture"
+    },
+    {
+      "name": "read_document",
+      "duration_seconds": 2.0,
+      "loop": false,
+      "description": "Two-hand document reading posture"
+    },
+    {
+      "name": "move_between_departments",
+      "duration_seconds": 4.0,
+      "loop": false,
+      "description": "Root motion between mapped company departments"
+    }
+  ],
+  "interaction_nodes": {
+    "coffee": "Coffee_Mug",
+    "document": "Document_Paper"
+  },
+  "reference_assets": {
+    "concept": "../babak-moradvand-3d-concept.png",
+    "personnel_photo": "../babak-moradvand-personnel-photo.webp"
+  },
+  "next_production_step": "Import the GLB into Blender/Unity/Unreal, replace blocking geometry with the final likeness, validate humanoid mapping, then export VRM 1.0."
+}
