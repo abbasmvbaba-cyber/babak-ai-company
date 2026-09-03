@@ -1,0 +1,36 @@
+{
+  "character_id": "BAC-0001",
+  "name": "Babak Moradvand",
+  "role": "Chief Executive Officer",
+  "concept_image": "babak-moradvand-3d-concept.png",
+  "status": "concept-render-v1",
+  "rig_status": "not-rigged",
+  "target_formats": ["GLB", "VRM"],
+  "visual_features": {
+    "wardrobe": "navy pinstripe three-piece suit with gold accents",
+    "eyewear": "thin-frame transparent warm yellow-tinted glasses",
+    "presentation": "cinematic full-body character on a dark hexagonal pedestal"
+  },
+  "control_requirements": [
+    "humanoid skeleton with IK",
+    "facial blendshapes and eye look-at",
+    "walk, sit, stand and talk states",
+    "coffee interaction",
+    "department-to-department navigation"
+  ],
+  "planned_actions": [
+    "idle",
+    "look_at",
+    "talk",
+    "listen",
+    "wave",
+    "walk",
+    "sit",
+    "stand",
+    "drink_coffee",
+    "point",
+    "read_document",
+    "move_between_departments"
+  ],
+  "privacy_note": "The supplied face reference is private and is not stored in this repository."
+}

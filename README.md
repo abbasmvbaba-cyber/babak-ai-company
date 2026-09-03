@@ -18,6 +18,7 @@
 | `hr-documents.html` | مسیر سازگار خزانهٔ اسناد HR؛ داخل داشبورد با پوسته و چت باز می‌شود |
 | `assets/office-map.png` | تصویر مرجع نمای سه‌بعدی دفتر شرکت |
 | `assets/babak-logo.svg` | لوگوی اختصاصی Babak AI Company |
+| `assets/characters/ceo/` | کانسپت سه‌بعدی مدیرعامل بابک و مشخصات ریگ/کنترل‌پذیری برای مرحلهٔ مدل‌سازی |
 | `hr/index.html` | دایرکتوری گرافیکی ۷۲ پرسنل با جست‌وجو و فیلتر |
 | `hr/data/employees.json` | دادهٔ ساختاریافته برای داشبورد یا ورود بعدی به Supabase |
 | `hr/data/employees.csv` | خروجی قابل بررسی در Excel |
