@@ -299,11 +299,20 @@
     .quick-actions { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 19px 15px; }
     .quick { padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); background: rgba(9,17,31,.5); font-size: 9px; }
     .quick:hover { color: var(--cyan); border-color: rgba(85,234,215,.35); }
-    .recipient-panel { flex: none; margin: 0 19px 2px; padding: 11px; border: 1px solid rgba(156,187,231,.14); border-radius: 13px; background: rgba(7,14,27,.5); }
-    .recipient-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .recipient-panel { flex: none; margin: 0 19px 2px; padding: 0; border: 1px solid rgba(156,187,231,.14); border-radius: 13px; background: rgba(7,14,27,.5); }
+    .recipient-toggle { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; padding: 11px; border: 0; border-radius: 12px; color: inherit; background: transparent; text-align: left; }
+    .recipient-toggle:hover { background: rgba(85,234,215,.06); }
+    .recipient-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: -2px; }
+    .recipient-toggle-copy { display: grid; min-width: 0; gap: 2px; }
     .recipient-title { color: var(--ink); font-size: 10px; font-weight: 750; }
-    .recipient-subtitle { margin-top: 2px; color: var(--quiet); font-size: 8px; }
-    .recipient-count { flex: none; padding: 4px 6px; border: 1px solid rgba(85,234,215,.2); border-radius: 6px; color: var(--cyan); background: rgba(85,234,215,.06); font-size: 8px; white-space: nowrap; }
+    .recipient-subtitle { overflow: hidden; color: var(--quiet); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+    .recipient-toggle-meta { display: flex; align-items: center; gap: 7px; flex: none; }
+    .recipient-count { padding: 4px 6px; border: 1px solid rgba(85,234,215,.2); border-radius: 6px; color: var(--cyan); background: rgba(85,234,215,.06); font-size: 8px; white-space: nowrap; }
+    .recipient-chevron { color: var(--muted); font-size: 13px; line-height: 1; transition: transform .18s ease; }
+    .recipient-panel.is-open .recipient-chevron { transform: rotate(180deg); }
+    .recipient-panel.is-open .recipient-toggle { border-bottom: 1px solid rgba(156,187,231,.12); border-radius: 12px 12px 0 0; }
+    .recipient-details { max-height: 0; overflow: hidden; padding: 0 11px; opacity: 0; pointer-events: none; transition: max-height .25s ease, opacity .2s ease, padding .25s ease; }
+    .recipient-panel.is-open .recipient-details { max-height: 430px; padding-bottom: 11px; opacity: 1; pointer-events: auto; }
     .recipient-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 9px; }
     .recipient-field { display: grid; gap: 4px; min-width: 0; }
     .recipient-field > span { color: var(--quiet); font-size: 8px; letter-spacing: .04em; text-transform: uppercase; }
@@ -542,19 +551,24 @@
             </div>
             <div class="quick-label">Quick commands · ask AI or route to selected people</div>
             <div class="quick-actions"><button class="quick" data-command="Summarize my day">Summarize my day</button><button class="quick" data-command="Show risks">Show risks</button><button class="quick" data-command="Run a workflow">Run a workflow</button><button class="quick" data-command="Prepare a report">Prepare a report</button></div>
-            <section class="recipient-panel" aria-label="Message recipients">
-              <div class="recipient-head"><div><div class="recipient-title">Send to people</div><div class="recipient-subtitle">Mention one person or a whole group. No selection means AI answers you.</div></div><span class="recipient-count" id="recipientCount">0 selected</span></div>
-              <div class="recipient-controls">
-                <label class="recipient-field"><span>Department</span><select id="recipientDepartment" aria-label="Filter personnel by department"><option value="all">All departments</option></select></label>
-                <label class="recipient-field"><span>Send as</span><select id="messageType" aria-label="Choose the item type"><option value="message">Message</option><option value="task">Task</option><option value="request">Request</option><option value="announcement">Announcement</option><option value="note">Note</option></select></label>
+            <section class="recipient-panel" id="recipientPanel" aria-label="Message recipients">
+              <button type="button" class="recipient-toggle" id="recipientToggle" aria-expanded="false" aria-controls="recipientDetails">
+                <span class="recipient-toggle-copy"><span class="recipient-title">Send to people</span><span class="recipient-subtitle" id="recipientSubtitle">Click to choose people, or let AI answer directly.</span></span>
+                <span class="recipient-toggle-meta"><span class="recipient-count" id="recipientCount">0 selected</span><span class="recipient-chevron" aria-hidden="true">⌄</span></span>
+              </button>
+              <div class="recipient-details" id="recipientDetails" aria-hidden="true">
+                <div class="recipient-controls">
+                  <label class="recipient-field"><span>Department</span><select id="recipientDepartment" aria-label="Filter personnel by department"><option value="all">All departments</option></select></label>
+                  <label class="recipient-field"><span>Send as</span><select id="messageType" aria-label="Choose the item type"><option value="message">Message</option><option value="task">Task</option><option value="request">Request</option><option value="announcement">Announcement</option><option value="note">Note</option></select></label>
+                </div>
+                <div class="recipient-picker">
+                  <div class="recipient-picker-head"><strong id="recipientListLabel">Choose personnel to mention</strong><button type="button" id="selectAllRecipients">Select all shown</button></div>
+                  <div class="recipient-search"><input id="recipientSearch" type="search" placeholder="Find personnel by name or role…" aria-label="Search personnel to mention" autocomplete="off"></div>
+                  <div class="recipient-list" id="recipientList"></div>
+                </div>
+                <div class="mention-header"><span>Mentions in next send</span><button type="button" class="clear-recipients" id="clearRecipients">Clear</button></div>
+                <div class="mention-strip" id="mentionStrip"><span class="mention-empty">No one selected — the AI will answer directly.</span></div>
               </div>
-              <div class="recipient-picker">
-                <div class="recipient-picker-head"><strong id="recipientListLabel">Choose personnel to mention</strong><button type="button" id="selectAllRecipients">Select all shown</button></div>
-                <div class="recipient-search"><input id="recipientSearch" type="search" placeholder="Find personnel by name or role…" aria-label="Search personnel to mention" autocomplete="off"></div>
-                <div class="recipient-list" id="recipientList"></div>
-              </div>
-              <div class="mention-header"><span>Mentions in next send</span><button type="button" class="clear-recipients" id="clearRecipients">Clear</button></div>
-              <div class="mention-strip" id="mentionStrip"><span class="mention-empty">No one selected — the AI will answer directly.</span></div>
             </section>
             <form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Ask the company OS anything…" autocomplete="off" /><button class="send" type="submit" aria-label="Send">↗</button></form>
           </article>
@@ -779,7 +793,18 @@
     const clearRecipients = document.getElementById('clearRecipients');
     const mentionStrip = document.getElementById('mentionStrip');
     const messageType = document.getElementById('messageType');
+    const recipientPanel = document.getElementById('recipientPanel');
+    const recipientToggle = document.getElementById('recipientToggle');
+    const recipientDetails = document.getElementById('recipientDetails');
+    const recipientSubtitle = document.getElementById('recipientSubtitle');
     const selectedRecipientIds = new Set();
+
+    function setRecipientPanel(open) {
+      recipientPanel.classList.toggle('is-open', open);
+      recipientToggle.setAttribute('aria-expanded', String(open));
+      recipientDetails.setAttribute('aria-hidden', String(!open));
+    }
+    recipientToggle.addEventListener('click', () => setRecipientPanel(recipientToggle.getAttribute('aria-expanded') !== 'true'));
 
     function addMessage(text, type) {
       const message = document.createElement('div');
@@ -802,6 +827,7 @@
     function updateRecipientSummary() {
       const people = selectedPeople();
       recipientCount.textContent = people.length + ' selected';
+      recipientSubtitle.textContent = people.length ? people.length + ' people selected · click here to edit mentions.' : 'Click to choose people, or let AI answer directly.';
       const typeLabel = messageType.options[messageType.selectedIndex]?.textContent.toLowerCase() || 'message';
       chatInput.placeholder = people.length ? 'Write a ' + typeLabel + ' for ' + people.length + ' selected people…' : 'Ask the company OS anything…';
     }
