@@ -122,6 +122,105 @@
     .profile-name { font-size: 11px; font-weight: 700; }
     .profile-role { margin-top: 1px; color: var(--quiet); font-size: 9px; }
     .content { max-width: 1600px; margin: 0 auto; padding-top: 29px; }
+    .workspace-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(315px, 350px); gap: 14px; align-items: start; }
+    #viewHost { min-width: 0; }
+    .view { display: none; min-width: 0; animation: viewIn .22s ease both; }
+    .view.active { display: block; }
+    @keyframes viewIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .dashboard-grid.map-layout { grid-template-columns: minmax(0, 1fr); }
+    .workspace-layout > .ai-panel { position: sticky; top: 18px; align-self: start; min-height: 560px; max-height: calc(100vh - 100px); }
+    .view-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; margin-bottom: 15px; }
+    .view-kicker { color: var(--cyan); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; font-weight: 750; }
+    .view-head h1 { margin: 5px 0 4px; color: var(--ink); font-size: clamp(25px, 3vw, 34px); letter-spacing: -.045em; line-height: 1.08; }
+    .view-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .view-head-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .presence-chip, .directory-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); background: rgba(10,18,32,.58); font-size: 9px; white-space: nowrap; }
+    .presence-dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; }
+    .presence-dot.working { background: var(--danger); box-shadow: 0 0 9px var(--danger); }
+    .presence-dot.available { background: var(--green); box-shadow: 0 0 9px var(--green); }
+    .people-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+    .people-stat { position: relative; overflow: hidden; padding: 13px 14px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, rgba(18,31,54,.86), rgba(11,18,33,.77)); }
+    .people-stat::after { content: ""; position: absolute; right: -25px; top: -40px; width: 86px; height: 86px; border-radius: 50%; background: var(--accent, var(--cyan)); opacity: .1; }
+    .people-stat span { color: var(--muted); font-size: 10px; }
+    .people-stat strong { display: block; margin-top: 5px; color: var(--accent, var(--cyan)); font-size: 25px; letter-spacing: -.05em; }
+    .people-stat small { color: var(--quiet); font-size: 9px; }
+    .working-stat { --accent: var(--danger); } .available-stat { --accent: var(--green); }
+    .view-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; padding: 11px; border: 1px solid var(--line); border-radius: 14px; background: rgba(9,16,29,.68); }
+    .people-search { position: relative; min-width: 220px; flex: 1; }
+    .people-search span { position: absolute; left: 11px; top: 6px; color: var(--quiet); font-size: 15px; }
+    .people-search input, .view-toolbar select { height: 32px; width: 100%; border: 1px solid var(--line); border-radius: 8px; outline: 0; color: var(--ink); background: #091323; padding: 0 10px; font: inherit; font-size: 10px; }
+    .people-search input { padding-left: 31px; }
+    .people-search input:focus, .view-toolbar select:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(85,234,215,.07); }
+    .view-toolbar select { width: auto; min-width: 145px; }
+    .people-department-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .department-people-card { min-width: 0; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(145deg, rgba(17,29,50,.88), rgba(10,17,31,.84)); overflow: hidden; }
+    .department-people-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 13px; border-bottom: 1px solid var(--line); }
+    .department-people-head strong { font-size: 12px; }
+    .department-people-head small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; }
+    .department-count { padding: 5px 7px; border: 1px solid rgba(85,234,215,.22); border-radius: 7px; color: var(--cyan); background: rgba(85,234,215,.07); font-size: 9px; white-space: nowrap; }
+    .person-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; padding: 10px; }
+    .person-node { min-width: 0; padding: 8px 5px 7px; border: 1px solid transparent; border-radius: 10px; text-align: center; cursor: pointer; transition: .18s ease; }
+    .person-node:hover { border-color: rgba(85,234,215,.25); background: rgba(43,75,110,.18); transform: translateY(-1px); }
+    .person-avatar { position: relative; width: 35px; height: 35px; display: grid; place-items: center; margin: 0 auto 6px; border: 1px solid rgba(117,168,255,.26); border-radius: 50%; color: #dffaff; background: linear-gradient(135deg, #1a4960, #3a2862); font-size: 10px; font-weight: 800; }
+    .person-avatar.working { border-color: rgba(255,119,152,.33); background: linear-gradient(135deg, #4a2345, #24345c); }
+    .person-avatar.available { border-color: rgba(92,230,165,.34); background: linear-gradient(135deg, #16493e, #223c60); }
+    .head-dot { position: absolute; top: -3px; right: 1px; width: 9px; height: 9px; border: 2px solid #101b30; border-radius: 50%; background: var(--danger); box-shadow: 0 0 8px var(--danger); }
+    .person-avatar.available .head-dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
+    .person-name { overflow: hidden; color: var(--ink); font-size: 9px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .person-role { overflow: hidden; margin-top: 2px; color: var(--quiet); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+    .department-empty { grid-column: 1 / -1; padding: 30px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); text-align: center; font-size: 11px; }
+    .departments-browser { display: grid; grid-template-columns: minmax(0, 1fr) 245px; gap: 12px; }
+    .department-detail, .department-index { min-width: 0; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(145deg, rgba(17,29,50,.88), rgba(10,17,31,.84)); }
+    .department-index { grid-column: 2; grid-row: 1; padding: 11px; }
+    .department-detail { grid-column: 1; grid-row: 1; padding: 17px; }
+    .index-head { display: flex; justify-content: space-between; align-items: center; padding: 3px 3px 10px; color: var(--ink); font-size: 11px; font-weight: 750; }
+    .index-head b { color: var(--cyan); font-size: 10px; }
+    .department-index-list { display: grid; gap: 4px; }
+    .department-item { display: flex; align-items: center; justify-content: space-between; gap: 7px; width: 100%; padding: 9px 8px; border: 1px solid transparent; border-radius: 9px; color: var(--muted); background: transparent; text-align: left; font-size: 10px; transition: .18s ease; }
+    .department-item:hover { color: var(--ink); background: rgba(41,67,104,.27); }
+    .department-item.active { color: var(--cyan); border-color: rgba(85,234,215,.22); background: rgba(85,234,215,.08); }
+    .department-item span:last-child { color: var(--quiet); font-size: 9px; }
+    .department-detail-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding-bottom: 15px; border-bottom: 1px solid var(--line); }
+    .department-detail-head h2 { margin: 5px 0 3px; font-size: 22px; letter-spacing: -.04em; }
+    .department-detail-head p { margin: 0; color: var(--muted); font-size: 10px; }
+    .department-symbol { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(173,131,255,.34); border-radius: 13px; color: var(--purple); background: rgba(91,57,155,.17); font-size: 19px; }
+    .department-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0; }
+    .department-fact { padding: 10px; border: 1px solid rgba(156,187,231,.12); border-radius: 10px; background: rgba(8,15,28,.45); }
+    .department-fact span { display: block; color: var(--quiet); font-size: 9px; }
+    .department-fact b { display: block; margin-top: 3px; color: var(--ink); font-size: 13px; }
+    .department-subtitle { margin: 17px 0 9px; color: var(--cyan); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
+    .department-subitems { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .department-subitem { display: flex; align-items: flex-start; gap: 9px; min-width: 0; padding: 10px; border: 1px solid rgba(156,187,231,.13); border-radius: 11px; color: var(--muted); background: rgba(8,15,28,.42); text-align: left; }
+    .department-subitem:hover { border-color: rgba(85,234,215,.32); background: rgba(22,54,67,.28); }
+    .subitem-icon { width: 24px; height: 24px; display: grid; place-items: center; flex: none; border-radius: 7px; color: var(--cyan); background: rgba(85,234,215,.1); font-size: 11px; }
+    .subitem-title { color: var(--ink); font-size: 10px; font-weight: 700; }
+    .subitem-copy { margin-top: 2px; color: var(--quiet); font-size: 9px; line-height: 1.4; }
+    .department-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 15px; padding: 8px 10px; border: 1px solid rgba(85,234,215,.29); border-radius: 9px; color: var(--cyan); background: rgba(85,234,215,.07); font-size: 10px; font-weight: 700; }
+    .department-cta:hover { background: rgba(85,234,215,.14); }
+    .document-notice { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 12px; padding: 11px 13px; border: 1px solid rgba(244,202,106,.22); border-radius: 12px; color: #e8d394; background: rgba(71,52,15,.25); font-size: 10px; line-height: 1.55; }
+    .document-notice span { color: var(--gold); font-size: 14px; }
+    .document-count { color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .document-count b { color: var(--cyan); }
+    .document-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 15px; background: rgba(10,18,32,.74); }
+    .document-table { width: 100%; min-width: 760px; border-collapse: collapse; }
+    .document-table th { padding: 10px 12px; color: var(--quiet); border-bottom: 1px solid var(--line); background: rgba(8,15,27,.65); font-size: 9px; font-weight: 650; text-align: left; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+    .document-table td { padding: 10px 12px; border-bottom: 1px solid rgba(156,187,231,.08); color: var(--muted); font-size: 9px; vertical-align: middle; }
+    .document-table tr:hover td { background: rgba(35,63,96,.16); }
+    .document-person { display: flex; align-items: center; gap: 8px; min-width: 145px; }
+    .document-initials { width: 27px; height: 27px; display: grid; place-items: center; border: 1px solid rgba(85,234,215,.25); border-radius: 8px; color: var(--cyan); background: linear-gradient(135deg,#143c4b,#312358); font-size: 8px; font-weight: 800; }
+    .document-person b { display: block; color: var(--ink); font-size: 10px; }
+    .document-person small { display: block; margin-top: 1px; color: var(--cyan); font-size: 8px; }
+    .document-links { display: flex; flex-wrap: wrap; gap: 4px; min-width: 310px; }
+    .document-link { padding: 4px 6px; border: 1px solid rgba(119,168,255,.22); border-radius: 6px; color: #bdd2ff; background: rgba(51,86,144,.15); font-size: 8px; white-space: nowrap; }
+    .document-link:hover { border-color: var(--cyan); color: #fff; }
+    .document-verification { color: var(--gold); white-space: nowrap; }
+    .document-profile { padding: 5px 7px; border: 1px solid rgba(85,234,215,.27); border-radius: 7px; color: var(--cyan); white-space: nowrap; }
+    .document-profile:hover { background: rgba(85,234,215,.09); }
+    .placeholder-shell { min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed rgba(156,187,231,.24); border-radius: 19px; color: var(--muted); background: radial-gradient(circle at center, rgba(34,56,92,.24), rgba(8,14,27,.38)); text-align: center; }
+    .placeholder-mark { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid rgba(85,234,215,.25); border-radius: 16px; color: var(--cyan); background: rgba(85,234,215,.08); font-size: 20px; }
+    .placeholder-shell h2 { margin: 17px 0 5px; color: var(--ink); font-size: 16px; }
+    .placeholder-shell p { margin: 0; color: var(--quiet); font-size: 10px; }
+
     .welcome { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 20px; overflow: hidden; padding: 23px 25px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(105deg, rgba(24,44,76,.74), rgba(16,25,47,.52) 62%, rgba(29,41,79,.45)); box-shadow: var(--shadow); }
     .welcome::after { content: ""; position: absolute; width: 400px; height: 240px; right: -110px; top: -110px; border-radius: 50%; background: radial-gradient(circle, rgba(110,130,255,.23), transparent 67%); pointer-events: none; }
     .welcome-copy { position: relative; z-index: 1; }
@@ -189,7 +288,7 @@
     .ai-status { display: flex; align-items: center; gap: 5px; margin-top: 2px; color: var(--green); font-size: 9px; }
     .ai-status i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
     .ai-more { color: var(--muted); font-size: 17px; }
-    .chat { display: grid; gap: 12px; padding: 17px 19px; }
+    .chat { display: grid; gap: 12px; max-height: 310px; overflow-y: auto; padding: 17px 19px; scrollbar-width: thin; scrollbar-color: rgba(85,234,215,.25) transparent; }
     .message { max-width: 92%; padding: 10px 11px; border-radius: 11px; font-size: 10px; line-height: 1.6; }
     .message.ai { border: 1px solid rgba(116,169,218,.14); border-top-left-radius: 3px; color: #ccd9ec; background: rgba(28,50,80,.44); }
     .message.user { margin-left: auto; border: 1px solid rgba(85,234,215,.19); border-bottom-right-radius: 3px; color: #d8fff7; background: rgba(36,105,102,.26); }
@@ -235,8 +334,8 @@
     .modal-caption { margin: 10px 3px 1px; color: var(--muted); font-size: 10px; }
     @media (max-width: 1280px) { .kpis { grid-template-columns: repeat(3, minmax(0,1fr)); } .dashboard-grid { grid-template-columns: minmax(0, 1.35fr) minmax(300px, .82fr); } }
     @media (max-width: 1040px) { .app-shell { grid-template-columns: 74px minmax(0,1fr); } .sidebar { padding: 19px 10px; } .brand { justify-content: center; padding: 0 0 4px; } .brand > div, .workspace, .nav-title, .nav-label, .nav-count, .nav-parent .chev, .system-card, .sidebar-legal { display: none; } .department-subnav { display: none !important; } .nav-item { justify-content: center; padding: 10px 8px; } .nav-icon { width: 28px; height: 28px; } .main { padding: 0 21px 30px; } }
-    @media (max-width: 820px) { .topbar { height: 70px; } .search { width: 40px; } .search input { opacity: 0; padding: 0; cursor: pointer; } .search-icon { left: 12px; } .shortcut { display: none; } .profile-name, .profile-role { display: none; } .welcome { align-items: flex-start; flex-direction: column; } .dashboard-grid, .lower-grid { grid-template-columns: 1fr; } .ai-panel { min-height: 480px; } .map-stage { min-height: 330px; } }
-    @media (max-width: 560px) { .app-shell { grid-template-columns: 1fr; } .sidebar { position: fixed; z-index: 10; left: 0; right: 0; bottom: 0; top: auto; width: 100%; height: 62px; display: flex; flex-direction: row; align-items: center; justify-content: space-around; padding: 7px 8px; border-top: 1px solid var(--line); border-right: 0; } .brand, .sidebar-bottom, .workspace, .nav-title { display: none; } .nav-list { display: flex; width: 100%; align-items: center; justify-content: space-around; gap: 3px; } .nav-item { width: auto; padding: 5px; } .nav-item:nth-child(n+6) { display: none; } .nav-icon { width: 34px; height: 34px; } .main { padding: 0 13px 85px; } .topbar { gap: 8px; } .breadcrumbs { font-size: 10px; } .top-actions { gap: 5px; } .profile { padding-left: 6px; } .content { padding-top: 18px; } .kpis { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; } .kpi { padding: 12px; } .kpi-value { font-size: 22px; } .kpi:nth-child(5) { grid-column: 1 / -1; } .panel-head { padding: 15px 14px 11px; } .map-controls, .task-body, .activity-list { padding-left: 14px; padding-right: 14px; } .map-stage { min-height: 275px; } .hotspot { padding: 4px; font-size: 0; } .hotspot-dot { width: 8px; height: 8px; } .hotspot.executive { left: 40%; } .hotspot.strategy { left: 31%; } .hotspot.marketing { left: 18%; } .hotspot.creative { right: 5%; } .hotspot.people { left: 8%; } .hotspot.research { right: 6%; } .hotspot.product { left: 30%; } .hotspot.ops { right: 20%; } .readout-meta { display: none; } .lower-panel { min-height: 220px; } }
+    @media (max-width: 820px) { .workspace-layout { grid-template-columns: 1fr; } .workspace-layout > .ai-panel { position: static; max-height: none; min-height: 480px; } .people-department-grid, .departments-browser { grid-template-columns: 1fr; } .department-index, .department-detail { grid-column: auto; grid-row: auto; } .department-index { order: -1; } .department-subitems { grid-template-columns: 1fr; } .topbar { height: 70px; } .search { width: 40px; } .search input { opacity: 0; padding: 0; cursor: pointer; } .search-icon { left: 12px; } .shortcut { display: none; } .profile-name, .profile-role { display: none; } .welcome { align-items: flex-start; flex-direction: column; } .dashboard-grid, .lower-grid { grid-template-columns: 1fr; } .ai-panel { min-height: 480px; } .map-stage { min-height: 330px; } }
+    @media (max-width: 560px) { .view-head { align-items: flex-start; flex-direction: column; } .view-head-meta { justify-content: flex-start; } .people-stats { gap: 7px; } .people-stat { padding: 10px; } .people-stat strong { font-size: 21px; } .people-department-grid { grid-template-columns: 1fr; } .person-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .department-facts { gap: 5px; } .department-fact { padding: 8px; } .view-toolbar select { min-width: 0; flex: 1; } .document-count { width: 100%; } .app-shell { grid-template-columns: 1fr; } .sidebar { position: fixed; z-index: 10; left: 0; right: 0; bottom: 0; top: auto; width: 100%; height: 62px; display: flex; flex-direction: row; align-items: center; justify-content: space-around; padding: 7px 8px; border-top: 1px solid var(--line); border-right: 0; } .brand, .sidebar-bottom, .workspace, .nav-title { display: none; } .nav-list { display: flex; width: 100%; align-items: center; justify-content: space-around; gap: 3px; } .nav-item { width: auto; padding: 5px; } .nav-item:nth-child(n+6) { display: none; } .nav-icon { width: 34px; height: 34px; } .main { padding: 0 13px 85px; } .topbar { gap: 8px; } .breadcrumbs { font-size: 10px; } .top-actions { gap: 5px; } .profile { padding-left: 6px; } .content { padding-top: 18px; } .kpis { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; } .kpi { padding: 12px; } .kpi-value { font-size: 22px; } .kpi:nth-child(5) { grid-column: 1 / -1; } .panel-head { padding: 15px 14px 11px; } .map-controls, .task-body, .activity-list { padding-left: 14px; padding-right: 14px; } .map-stage { min-height: 275px; } .hotspot { padding: 4px; font-size: 0; } .hotspot-dot { width: 8px; height: 8px; } .hotspot.executive { left: 40%; } .hotspot.strategy { left: 31%; } .hotspot.marketing { left: 18%; } .hotspot.creative { right: 5%; } .hotspot.people { left: 8%; } .hotspot.research { right: 6%; } .hotspot.product { left: 30%; } .hotspot.ops { right: 20%; } .readout-meta { display: none; } .lower-panel { min-height: 220px; } }
   </style>
 </head>
 <body>
@@ -262,7 +361,7 @@
             <button class="subnav-item" data-department="Intelligence"><span>Intelligence</span><span class="sub-count">7</span></button>
             <div class="department-branch">
               <button class="subnav-item" data-department="HR"><span>HR</span><span class="sub-count">6</span></button>
-              <a class="subnav-item nested" href="hr-documents.html"><span>Personnel Documents</span><span class="sub-count">72</span></a>
+              <button class="subnav-item nested" data-section="Personnel Documents" data-view="Documents"><span>Personnel Documents</span><span class="sub-count">72</span></button>
             </div>
             <button class="subnav-item" data-department="Finance"><span>Finance</span><span class="sub-count">5</span></button>
             <button class="subnav-item" data-department="Product Development"><span>Product Development</span><span class="sub-count">8</span></button>
@@ -300,6 +399,9 @@
       </header>
 
       <div class="content">
+        <div class="workspace-layout">
+          <div id="viewHost">
+            <div id="overviewView" class="view active">
         <section class="welcome">
           <div class="welcome-copy"><div class="welcome-eyebrow">Thursday · September 3, 2026</div><h1>Good morning, Babak.</h1><p>Your company is moving with focus today. Here is the signal that matters.</p></div>
           <button class="primary-button" id="openAi">Open AI Command Center <span>↗</span></button>
@@ -313,7 +415,7 @@
           <div class="kpi" style="--accent:var(--pink)"><div class="kpi-head"><span>Reports</span><span class="kpi-icon">▤</span></div><div class="kpi-value">8</div><div class="kpi-foot positive">3 generated by AI</div></div>
         </section>
 
-        <section class="dashboard-grid">
+        <section class="dashboard-grid map-layout">
           <article class="panel map-panel">
             <div class="panel-head"><div><div class="panel-kicker">Spatial intelligence</div><div class="panel-title">Company at a glance</div><div class="panel-sub">Explore the operating map of your organization</div></div><button class="panel-action" id="fullMap">View full map ↗</button></div>
             <div class="map-controls"><button class="map-mode active">2.5D view</button><button class="map-mode" id="liveLayer">Live layer</button><span class="map-spacer"></span><span style="color:var(--quiet);font-size:9px">Updated 2 min ago</span></div>
@@ -332,6 +434,40 @@
             <div class="map-readout"><div class="readout-room"><i class="readout-marker"></i><div><div class="readout-name" id="roomName">Executive Suite</div><div class="readout-desc" id="roomCopy">Leadership decisions and company priorities</div></div></div><div class="readout-meta" id="roomTeam">3 people online</div></div>
           </article>
 
+
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel lower-panel"><div class="panel-head"><div><div class="panel-kicker">Execution pulse</div><div class="panel-title">Work moving through the company</div><div class="panel-sub">A live view of the current task pipeline</div></div><button class="panel-action" data-action="tasks">View tasks ↗</button></div><div class="task-body"><div class="task-summary"><div class="task-big">42 <small>total tasks</small></div><div class="task-copy">18 active · 15 completed this week<br /><span class="positive">+8.6% velocity</span></div></div><div class="task-list"><div class="task-row"><span class="task-label">In progress</span><div class="task-track"><span style="width:64%;--bar:var(--cyan)"></span></div><span class="task-number">18</span></div><div class="task-row"><span class="task-label">In review</span><div class="task-track"><span style="width:39%;--bar:var(--purple)"></span></div><span class="task-number">6</span></div><div class="task-row"><span class="task-label">Blocked</span><div class="task-track"><span style="width:18%;--bar:var(--pink)"></span></div><span class="task-number">3</span></div><div class="task-row"><span class="task-label">Completed</span><div class="task-track"><span style="width:84%;--bar:var(--green)"></span></div><span class="task-number">15</span></div></div></div></article>
+          <article class="panel lower-panel"><div class="panel-head"><div><div class="panel-kicker">Live feed</div><div class="panel-title">Company activity</div><div class="panel-sub">The latest signal from your teams</div></div><button class="panel-action" data-action="activity">See all ↗</button></div><div class="activity-list" id="activityList"><div class="activity"><div class="activity-avatar" style="--activity-color:var(--purple)">M</div><div class="activity-text"><b>Marketing</b> completed the Atlas campaign brief</div><div class="activity-time">8m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--cyan)">P</div><div class="activity-text"><b>Product Studio</b> moved Sprint 04 to review</div><div class="activity-time">21m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--gold)">F</div><div class="activity-text"><b>Finance</b> uploaded the August runway report</div><div class="activity-time">46m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--pink)">H</div><div class="activity-text"><b>People & Talent</b> welcomed a new team member</div><div class="activity-time">1h</div></div></div></article>
+        </section>
+            </div>
+
+            <section id="peopleView" class="view">
+              <div class="view-head"><div><div class="view-kicker">People / Workforce map</div><h1>People</h1><p>Every team member, grouped by department, with a live presence signal.</p></div><div class="view-head-meta"><span class="presence-chip"><i class="presence-dot working"></i> Working</span><span class="presence-chip"><i class="presence-dot available"></i> Available</span></div></div>
+              <div class="people-stats"><div class="people-stat"><span>Total people</span><strong>72</strong><small>across 12 departments</small></div><div class="people-stat working-stat"><span>Working now</span><strong id="workingCount">54</strong><small>red dot · active work signal</small></div><div class="people-stat available-stat"><span>Available</span><strong id="availableCount">18</strong><small>green dot · no active task</small></div></div>
+              <div class="view-toolbar"><div class="people-search"><span>⌕</span><input id="peopleSearch" type="search" placeholder="Search by name, role or department…"></div><select id="peopleStatus"><option value="all">All presence states</option><option value="working">Working now</option><option value="available">Available</option></select><select id="peopleDepartment"><option value="all">All departments</option></select></div>
+              <div id="peopleDepartmentGrid" class="people-department-grid"></div>
+            </section>
+
+            <section id="departmentsView" class="view">
+              <div class="view-head"><div><div class="view-kicker">Departments / Operating system</div><h1>Departments</h1><p>Choose a department to see people, records, workflows and documents.</p></div><div class="view-head-meta"><span class="directory-chip">12 departments</span></div></div>
+              <div class="departments-browser"><section id="departmentDetail" class="department-detail"></section><aside class="department-index"><div class="index-head"><span>All departments</span><b>12</b></div><div id="departmentIndexList" class="department-index-list"></div></aside></div>
+            </section>
+
+            <section id="documentsView" class="view">
+              <div class="view-head"><div><div class="view-kicker">HR / Personnel documents</div><h1>Personnel Documents</h1><p>Every employee file and internal HR document, kept inside the company OS.</p></div><div class="view-head-meta"><span class="directory-chip">72 employee files</span></div></div>
+              <div class="document-notice"><span>◈</span><div><b>Demo document vault.</b> Internal records are available below. Identity documents, signed contracts and original credentials remain private and pending.</div></div>
+              <div class="view-toolbar"><div class="people-search"><span>⌕</span><input id="documentSearch" type="search" placeholder="Search employee files…"></div><select id="documentDepartment"><option value="all">All departments</option></select><div class="document-count">Showing <b id="documentCount">72</b> employee files</div></div>
+              <div class="document-table-wrap"><table class="document-table"><thead><tr><th>Employee</th><th>Department</th><th>Document set</th><th>Verification</th><th>Profile</th></tr></thead><tbody id="documentRows"></tbody></table></div>
+            </section>
+
+            <section id="placeholderView" class="view">
+              <div class="view-head"><div><div class="view-kicker">Company OS / Module</div><h1 id="placeholderTitle">Workspace</h1><p id="placeholderCopy">This module is reserved for the next build.</p></div><div class="view-head-meta"><span class="directory-chip">Coming next</span></div></div>
+              <div class="placeholder-shell"><div class="placeholder-mark">✦</div><h2 id="placeholderPanelTitle">A clear space for the next module.</h2><p>Keep the company OS shell and AI Command Center while this workspace is being designed.</p></div>
+            </section>
+
+          </div>
           <article class="panel ai-panel" id="aiPanel">
             <div class="ai-header"><div class="ai-orb"><span>✦</span></div><div class="ai-header-copy"><div class="ai-title">AI Command Center</div><div class="ai-status"><i></i> Agency intelligence ready</div></div><button class="ai-more" aria-label="More AI options">•••</button></div>
             <div class="chat" id="chat"><div class="message ai">Good morning, Babak. I have scanned the company pulse. <b>Marketing momentum is up 12%</b>, while two approvals are waiting for your decision.</div><div class="message user">Show me what needs my attention today.</div><div class="message ai">Start with <b>Campaign Atlas</b> approval and the Product Studio delivery risk. I can prepare a decision brief for both.</div></div>
@@ -339,12 +475,7 @@
             <div class="quick-actions"><button class="quick" data-command="Summarize my day">Summarize my day</button><button class="quick" data-command="Show risks">Show risks</button><button class="quick" data-command="Run a workflow">Run a workflow</button><button class="quick" data-command="Prepare a report">Prepare a report</button></div>
             <form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Ask the company OS anything…" autocomplete="off" /><button class="send" type="submit" aria-label="Send">↗</button></form>
           </article>
-        </section>
-
-        <section class="lower-grid">
-          <article class="panel lower-panel"><div class="panel-head"><div><div class="panel-kicker">Execution pulse</div><div class="panel-title">Work moving through the company</div><div class="panel-sub">A live view of the current task pipeline</div></div><button class="panel-action" data-action="tasks">View tasks ↗</button></div><div class="task-body"><div class="task-summary"><div class="task-big">42 <small>total tasks</small></div><div class="task-copy">18 active · 15 completed this week<br /><span class="positive">+8.6% velocity</span></div></div><div class="task-list"><div class="task-row"><span class="task-label">In progress</span><div class="task-track"><span style="width:64%;--bar:var(--cyan)"></span></div><span class="task-number">18</span></div><div class="task-row"><span class="task-label">In review</span><div class="task-track"><span style="width:39%;--bar:var(--purple)"></span></div><span class="task-number">6</span></div><div class="task-row"><span class="task-label">Blocked</span><div class="task-track"><span style="width:18%;--bar:var(--pink)"></span></div><span class="task-number">3</span></div><div class="task-row"><span class="task-label">Completed</span><div class="task-track"><span style="width:84%;--bar:var(--green)"></span></div><span class="task-number">15</span></div></div></div></article>
-          <article class="panel lower-panel"><div class="panel-head"><div><div class="panel-kicker">Live feed</div><div class="panel-title">Company activity</div><div class="panel-sub">The latest signal from your teams</div></div><button class="panel-action" data-action="activity">See all ↗</button></div><div class="activity-list" id="activityList"><div class="activity"><div class="activity-avatar" style="--activity-color:var(--purple)">M</div><div class="activity-text"><b>Marketing</b> completed the Atlas campaign brief</div><div class="activity-time">8m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--cyan)">P</div><div class="activity-text"><b>Product Studio</b> moved Sprint 04 to review</div><div class="activity-time">21m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--gold)">F</div><div class="activity-text"><b>Finance</b> uploaded the August runway report</div><div class="activity-time">46m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--pink)">H</div><div class="activity-text"><b>People & Talent</b> welcomed a new team member</div><div class="activity-time">1h</div></div></div></article>
-        </section>
+        </div>
       </div>
     </main>
   </div>
@@ -352,7 +483,9 @@
   <div class="toast" id="toast" role="status"></div>
   <div class="modal-backdrop" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapModalTitle"><div class="modal"><div class="modal-head"><strong id="mapModalTitle">Company 3D workspace</strong><button class="close" id="closeMap" aria-label="Close">×</button></div><div class="modal-body"><img class="modal-map" src="assets/office-map.png" alt="Full 3D isometric company workspace map" /><div class="modal-caption">Reference workspace image · interactive room layers will connect to live company data in the next release.</div></div></div></div>
 
+  <script type="application/json" id="employeeData">[{"employee_id":"BAC-0001","full_name":"آوا احمدی","gender":"زن","role":"مدیرعامل","department":"Management","native_department":"مدیریت عامل","agency_team":"Direction","age":31,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0002","full_name":"آناهیتا رضایی","gender":"زن","role":"مدیر دفتر مدیرعامل","department":"Management","native_department":"مدیریت عامل","agency_team":"Direction","age":32,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0003","full_name":"آرمان محمدی","gender":"مرد","role":"دستیار اجرایی","department":"Management","native_department":"مدیریت عامل","agency_team":"Direction","age":20,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0004","full_name":"آتوسا حسینی","gender":"زن","role":"مدیر استراتژی","department":"Strategy","native_department":"استراتژی","agency_team":"Strategy","age":33,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0005","full_name":"افسانه کریمی","gender":"زن","role":"مشاور ارشد استراتژی","department":"Strategy","native_department":"استراتژی","agency_team":"Strategy","age":34,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0006","full_name":"امیر مرادی","gender":"مرد","role":"تحلیلگر استراتژی","department":"Strategy","native_department":"استراتژی","agency_team":"Strategy","age":21,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0007","full_name":"الهام موسوی","gender":"زن","role":"پژوهشگر بازار","department":"Strategy","native_department":"استراتژی","agency_team":"Strategy","age":22,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0008","full_name":"الینا کاظمی","gender":"زن","role":"مدیر بازاریابی","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":35,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0009","full_name":"الناز اکبری","gender":"زن","role":"سرپرست SEO","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":36,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0010","full_name":"بهاره جعفری","gender":"زن","role":"کارشناس SEO","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":23,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0011","full_name":"امیرحسین حیدری","gender":"مرد","role":"مدیر شبکه‌های اجتماعی","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":37,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0012","full_name":"پرنیا نادری","gender":"زن","role":"کارشناس شبکه‌های اجتماعی","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":24,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0013","full_name":"پریسا صادقی","gender":"زن","role":"کارشناس تبلیغات عملکردی","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":20,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0014","full_name":"پگاه رستمی","gender":"زن","role":"مدیر کمپین","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":38,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0015","full_name":"ترانه شریفی","gender":"زن","role":"کپی‌رایتر","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":21,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0016","full_name":"ثنا رحیمی","gender":"زن","role":"کارشناس ایمیل مارکتینگ","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":22,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0017","full_name":"بهنام قاسمی","gender":"مرد","role":"کارشناس روابط عمومی","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":23,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0018","full_name":"جمیله میرزایی","gender":"زن","role":"کارشناس اینفلوئنسر مارکتینگ","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":24,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0019","full_name":"حنانه فرهادی","gender":"زن","role":"تحلیلگر بازاریابی","department":"Marketing","native_department":"بازاریابی","agency_team":"Marketing","age":20,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0020","full_name":"درسا طاهری","gender":"زن","role":"مدیر فروش","department":"Sales","native_department":"فروش","agency_team":"Sales","age":39,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0021","full_name":"دریا رستگار","gender":"زن","role":"سرپرست فروش","department":"Sales","native_department":"فروش","agency_team":"Sales","age":40,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0022","full_name":"دنیا نوری","gender":"زن","role":"کارشناس فروش سازمانی","department":"Sales","native_department":"فروش","agency_team":"Sales","age":21,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0023","full_name":"رها یوسفی","gender":"زن","role":"کارشناس فروش سازمانی","department":"Sales","native_department":"فروش","agency_team":"Sales","age":22,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0024","full_name":"پویا قربانی","gender":"مرد","role":"کارشناس فروش","department":"Sales","native_department":"فروش","agency_team":"Sales","age":24,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0025","full_name":"روژان عباسی","gender":"زن","role":"کارشناس فروش","department":"Sales","native_department":"فروش","agency_team":"Sales","age":25,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0026","full_name":"سارا باقری","gender":"زن","role":"کارشناس توسعه کسب‌وکار","department":"Sales","native_department":"فروش","agency_team":"Sales","age":26,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0027","full_name":"سمیرا نیک‌نام","gender":"زن","role":"کارشناس توسعه کسب‌وکار","department":"Sales","native_department":"فروش","agency_team":"Sales","age":27,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0028","full_name":"سپیده شمس","gender":"زن","role":"کارشناس موفقیت مشتری","department":"Sales","native_department":"فروش","agency_team":"Sales","age":28,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0029","full_name":"پیمان مهرابی","gender":"مرد","role":"کارشناس موفقیت مشتری","department":"Sales","native_department":"فروش","agency_team":"Sales","age":29,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0030","full_name":"سحر آقایی","gender":"زن","role":"مدیر هوش تجاری","department":"Intelligence","native_department":"تحلیل و هوش تجاری","agency_team":"Intelligence","age":41,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0031","full_name":"سمانه سلیمانی","gender":"زن","role":"دانشمند داده","department":"Intelligence","native_department":"تحلیل و هوش تجاری","agency_team":"Intelligence","age":42,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0032","full_name":"شبنم کمالی","gender":"زن","role":"مهندس داده","department":"Intelligence","native_department":"تحلیل و هوش تجاری","agency_team":"Intelligence","age":30,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0033","full_name":"شیوا دادخواه","gender":"زن","role":"تحلیلگر داده","department":"Intelligence","native_department":"تحلیل و هوش تجاری","agency_team":"Intelligence","age":25,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0034","full_name":"حامد زارعی","gender":"مرد","role":"تحلیلگر هوش رقابتی","department":"Intelligence","native_department":"تحلیل و هوش تجاری","agency_team":"Intelligence","age":26,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0035","full_name":"صبا صابری","gender":"زن","role":"پژوهشگر هوش بازار","department":"Intelligence","native_department":"تحلیل و هوش تجاری","agency_team":"Intelligence","age":27,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0036","full_name":"طناز توکلی","gender":"زن","role":"مهندس یادگیری ماشین","department":"Intelligence","native_department":"تحلیل و هوش تجاری","agency_team":"Intelligence","age":28,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0037","full_name":"عاطفه معینی","gender":"زن","role":"مدیر منابع انسانی","department":"HR","native_department":"منابع انسانی","agency_team":"Managing","age":43,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0038","full_name":"غزل بیات","gender":"زن","role":"کارشناس جذب و استخدام","department":"HR","native_department":"منابع انسانی","agency_team":"Managing","age":29,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0039","full_name":"فاطمه کاوه","gender":"زن","role":"کارشناس آموزش و توسعه","department":"HR","native_department":"منابع انسانی","agency_team":"Managing","age":30,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0040","full_name":"حسین خلیلی","gender":"مرد","role":"کارشناس جبران خدمات","department":"HR","native_department":"منابع انسانی","agency_team":"Managing","age":25,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0041","full_name":"فرزانه صفری","gender":"زن","role":"کارشناس منابع انسانی","department":"HR","native_department":"منابع انسانی","agency_team":"Managing","age":26,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0042","full_name":"فرنوش خرم","gender":"زن","role":"دستیار منابع انسانی","department":"HR","native_department":"منابع انسانی","agency_team":"Managing","age":27,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0043","full_name":"کتایون پاکزاد","gender":"زن","role":"مدیر مالی","department":"Finance","native_department":"مالی","agency_team":"Managing","age":44,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0044","full_name":"کیانا نوروزی","gender":"زن","role":"حسابدار ارشد","department":"Finance","native_department":"مالی","agency_team":"Managing","age":45,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0045","full_name":"سامان حبیبی","gender":"مرد","role":"حسابدار","department":"Finance","native_department":"مالی","agency_team":"Managing","age":28,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0046","full_name":"مریم بنی‌هاشمی","gender":"زن","role":"کارشناس حقوق و دستمزد","department":"Finance","native_department":"مالی","agency_team":"Managing","age":29,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0047","full_name":"مهسا جهانگیری","gender":"زن","role":"کارشناس مالی","department":"Finance","native_department":"مالی","agency_team":"Managing","age":30,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0048","full_name":"مهشید اسماعیلی","gender":"زن","role":"مدیر محصول","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":46,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0049","full_name":"مژگان راد","gender":"زن","role":"مالک محصول","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":47,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0050","full_name":"نازنین رفیعی","gender":"زن","role":"مدیر پروژه","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":48,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0051","full_name":"شایان دانش","gender":"مرد","role":"توسعه‌دهنده ارشد","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":25,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0052","full_name":"نرگس فراهانی","gender":"زن","role":"توسعه‌دهنده Front-end","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":26,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0053","full_name":"نگار گلکار","gender":"زن","role":"توسعه‌دهنده Back-end","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":27,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0054","full_name":"نیایش نیک‌روش","gender":"زن","role":"مهندس QA","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":28,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0055","full_name":"علی عابدی","gender":"مرد","role":"مهندس DevOps و زیرساخت","department":"Product Development","native_department":"توسعه محصول","agency_team":"Research","age":29,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0056","full_name":"نیکی فرهمند","gender":"زن","role":"مدیر طراحی","department":"Design","native_department":"طراحی","agency_team":"Content","age":34,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0057","full_name":"هانیه یزدانی","gender":"زن","role":"طراح ارشد UI/UX","department":"Design","native_department":"طراحی","agency_team":"Content","age":36,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0058","full_name":"فرهاد هاشمی","gender":"مرد","role":"طراح UI/UX","department":"Design","native_department":"طراحی","agency_team":"Content","age":30,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0059","full_name":"هلیا بهشتی","gender":"زن","role":"گرافیست","department":"Design","native_department":"طراحی","agency_team":"Content","age":25,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0060","full_name":"یاسمن فدایی","gender":"زن","role":"طراح حرکت و ویدیو","department":"Design","native_department":"طراحی","agency_team":"Content","age":26,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0061","full_name":"یلدا توسلی","gender":"زن","role":"مدیر فناوری اطلاعات","department":"IT","native_department":"فناوری اطلاعات","agency_team":"Research","age":38,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0062","full_name":"لیلا موحد","gender":"زن","role":"کارشناس شبکه","department":"IT","native_department":"فناوری اطلاعات","agency_team":"Research","age":27,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0063","full_name":"کیارش افشاری","gender":"مرد","role":"کارشناس پشتیبانی IT","department":"IT","native_department":"فناوری اطلاعات","agency_team":"Research","age":28,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0064","full_name":"لادن مرعشی","gender":"زن","role":"کارشناس امنیت اطلاعات","department":"IT","native_department":"فناوری اطلاعات","agency_team":"Research","age":29,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0065","full_name":"مونا کیانی","gender":"زن","role":"مدیر عملیات","department":"Operations","native_department":"عملیات","agency_team":"Managing","age":42,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0066","full_name":"مهتاب تهرانی","gender":"زن","role":"کارشناس عملیات","department":"Operations","native_department":"عملیات","agency_team":"Managing","age":30,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0067","full_name":"نوید امانی","gender":"مرد","role":"مسئول اداری","department":"Operations","native_department":"عملیات","agency_team":"Managing","age":25,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0068","full_name":"نوشین حسام‌پور","gender":"زن","role":"مسئول تدارکات","department":"Operations","native_department":"عملیات","agency_team":"Managing","age":26,"work_status":"available","status_label":"Available"},{"employee_id":"BAC-0069","full_name":"ویدا ساعی","gender":"زن","role":"کارشناس کنترل کیفیت","department":"Operations","native_department":"عملیات","agency_team":"Managing","age":27,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0070","full_name":"یگانه ملک‌زاده","gender":"زن","role":"مدیر آموزش و محتوا","department":"Training & Content","native_department":"آموزش و محتوا","agency_team":"Content","age":28,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0071","full_name":"راضیه سروش","gender":"زن","role":"مدرس سازمانی","department":"Training & Content","native_department":"آموزش و محتوا","agency_team":"Content","age":29,"work_status":"working","status_label":"Working"},{"employee_id":"BAC-0072","full_name":"آیدا مقدم","gender":"زن","role":"نویسنده و تهیه‌کننده محتوای آموزشی","department":"Training & Content","native_department":"آموزش و محتوا","agency_team":"Content","age":30,"work_status":"available","status_label":"Available"}]</script>
   <script>
+    const employeeData = JSON.parse(document.getElementById("employeeData").textContent);
     const toast = document.getElementById('toast');
     let toastTimer;
     function showToast(message) {
@@ -362,13 +495,29 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
     }
 
-    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => {
+    const departmentDirectory = [{"id":"management","name":"Management","native":"مدیریت عامل","team":"Direction","focus":"Company direction, decisions and executive alignment"},{"id":"strategy","name":"Strategy","native":"استراتژی","team":"Strategy","focus":"Strategic planning, research and growth priorities"},{"id":"marketing","name":"Marketing","native":"بازاریابی","team":"Marketing","focus":"Campaigns, acquisition, brand and market momentum"},{"id":"sales","name":"Sales","native":"فروش","team":"Sales","focus":"Revenue, partnerships and customer success"},{"id":"intelligence","name":"Intelligence","native":"تحلیل و هوش تجاری","team":"Intelligence","focus":"Data, insights, competitive and market intelligence"},{"id":"hr","name":"HR","native":"منابع انسانی","team":"Managing","focus":"People, culture, records and employee experience"},{"id":"finance","name":"Finance","native":"مالی","team":"Managing","focus":"Runway, payroll, controls and financial operations"},{"id":"product","name":"Product Development","native":"توسعه محصول","team":"Research","focus":"Product delivery, engineering and quality"},{"id":"design","name":"Design","native":"طراحی","team":"Content","focus":"User experience, visual systems and motion"},{"id":"it","name":"IT","native":"فناوری اطلاعات","team":"Research","focus":"Infrastructure, security and internal technology"},{"id":"operations","name":"Operations","native":"عملیات","team":"Managing","focus":"Administration, logistics and quality control"},{"id":"training","name":"Training & Content","native":"آموزش و محتوا","team":"Content","focus":"Learning, enablement and educational content"}];
+    const viewLabels = { Overview: 'Overview', People: 'People', Departments: 'Departments', Documents: 'Personnel Documents' };
+    let selectedDepartment = 'HR';
+
+    function clearNavSelection() {
       document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-      item.classList.add('active');
-      const section = item.dataset.section;
+      document.querySelectorAll('.subnav-item').forEach(nav => nav.classList.remove('active'));
+    }
+    function switchView(view, label) {
+      document.querySelectorAll('.view').forEach(item => item.classList.remove('active'));
+      const target = document.getElementById(view === 'Overview' ? 'overviewView' : view === 'People' ? 'peopleView' : view === 'Departments' ? 'departmentsView' : view === 'Documents' ? 'documentsView' : 'placeholderView');
+      if (target) target.classList.add('active');
+      const section = label || view;
       document.getElementById('sectionName').textContent = section;
-      if (section !== 'Overview' && section !== 'Departments') showToast(section + ' module is staged for the next build. The overview is live now.');
-    }));
+      if (view === 'People') renderPeople();
+      else if (view === 'Departments') renderDepartments();
+      else if (view === 'Documents') renderDocuments();
+      else if (view !== 'Overview') {
+        document.getElementById('placeholderTitle').textContent = section;
+        document.getElementById('placeholderPanelTitle').textContent = section + ' workspace is ready for design.';
+        document.getElementById('placeholderCopy').textContent = section + ' module';
+      }
+    }
 
     const departmentsToggle = document.getElementById('departmentsToggle');
     const departmentSubnav = document.getElementById('departmentSubnav');
@@ -377,14 +526,107 @@
       departmentsToggle.setAttribute('aria-expanded', String(!isOpen));
       departmentSubnav.hidden = isOpen;
     });
-    document.querySelectorAll('.subnav-item[data-department]').forEach(item => item.addEventListener('click', () => {
-      document.querySelectorAll('.subnav-item[data-department]').forEach(nav => nav.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => {
+      clearNavSelection();
       item.classList.add('active');
-      document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-      departmentsToggle.classList.add('active');
-      document.getElementById('sectionName').textContent = item.dataset.department;
-      if (item.dataset.department !== 'All departments') showToast(item.dataset.department + ' department selected.');
+      const view = item.dataset.view || item.dataset.section;
+      switchView(view, item.dataset.section);
     }));
+    document.querySelectorAll('.subnav-item[data-department]').forEach(item => item.addEventListener('click', () => {
+      selectedDepartment = item.dataset.department === 'All departments' ? 'All' : item.dataset.department;
+      clearNavSelection();
+      departmentsToggle.classList.add('active');
+      item.classList.add('active');
+      switchView('Departments', 'Departments');
+      renderDepartments();
+      showToast(selectedDepartment === 'All' ? 'All departments selected.' : selectedDepartment + ' department selected.');
+    }));
+    document.querySelectorAll('.subnav-item[data-view]').forEach(item => item.addEventListener('click', () => {
+      clearNavSelection();
+      departmentsToggle.classList.add('active');
+      item.classList.add('active');
+      switchView(item.dataset.view, item.dataset.section);
+    }));
+
+    const initials = name => String(name).trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('');
+    const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const byDepartment = name => employeeData.filter(person => person.department === name);
+
+    function renderPeople() {
+      const query = (document.getElementById('peopleSearch').value || '').trim().toLowerCase();
+      const status = document.getElementById('peopleStatus').value;
+      const department = document.getElementById('peopleDepartment').value;
+      const allWorking = employeeData.filter(person => person.work_status === 'working').length;
+      const allAvailable = employeeData.length - allWorking;
+      document.getElementById('workingCount').textContent = allWorking;
+      document.getElementById('availableCount').textContent = allAvailable;
+      const list = departmentDirectory.map(dept => {
+        const people = byDepartment(dept.name).filter(person => {
+          const haystack = [person.full_name, person.role, person.department, person.employee_id].join(' ').toLowerCase();
+          return (!query || haystack.includes(query)) && (status === 'all' || person.work_status === status) && (department === 'all' || person.department === department);
+        });
+        return { dept, people };
+      }).filter(group => group.people.length);
+      const grid = document.getElementById('peopleDepartmentGrid');
+      if (!list.length) { grid.innerHTML = '<div class="department-empty">No people match this search or filter.</div>'; return; }
+      grid.innerHTML = list.map(group => `<article class="department-people-card"><header class="department-people-head"><div><strong>${escapeHtml(group.dept.name)}</strong><small>${escapeHtml(group.dept.team)} · ${escapeHtml(group.dept.focus)}</small></div><span class="department-count">${group.people.length} shown</span></header><div class="person-grid">${group.people.map(person => `<button class="person-node" data-person="${escapeHtml(person.employee_id)}" title="${escapeHtml(person.full_name)} · ${escapeHtml(person.status_label)}"><span class="person-avatar ${person.work_status}"><i class="head-dot"></i>${escapeHtml(initials(person.full_name))}</span><span class="person-name">${escapeHtml(person.full_name)}</span><span class="person-role">${escapeHtml(person.role)}</span></button>`).join('')}</div></article>`).join('');
+      grid.querySelectorAll('.person-node').forEach(node => node.addEventListener('click', () => {
+        const person = employeeData.find(item => item.employee_id === node.dataset.person);
+        if (person) showToast(person.full_name + ' · ' + person.status_label + ' · ' + person.department);
+      }));
+    }
+
+    function renderDepartments() {
+      const list = document.getElementById('departmentIndexList');
+      list.innerHTML = departmentDirectory.map(dept => `<button class="department-item ${(selectedDepartment === dept.name || (selectedDepartment === 'HR' && dept.name === 'HR')) ? 'active' : ''}" data-dept="${escapeHtml(dept.name)}"><span>${escapeHtml(dept.name)}</span><span>${byDepartment(dept.name).length}</span></button>`).join('');
+      list.querySelectorAll('.department-item').forEach(item => item.addEventListener('click', () => { selectedDepartment = item.dataset.dept; renderDepartments(); }));
+      const department = departmentDirectory.find(item => item.name === selectedDepartment) || departmentDirectory.find(item => item.name === 'HR') || departmentDirectory[0];
+      selectedDepartment = department.name;
+      const people = byDepartment(department.name);
+      const isHr = department.name === 'HR';
+      const subitems = [
+        ['◈','Department overview',department.focus],
+        ['◎','People & roles',people.length + ' team members mapped to this department'],
+        ['▤',isHr ? 'Personnel Documents' : 'Documents & records',isHr ? '72 employee files · profiles, employment, education and family records' : 'Policies, references and operating records for ' + department.name],
+        ['✓','Tasks & workflows','Active work, recurring workflows and approvals'],
+        ['◒','Reports & analytics','Performance signals, trends and executive summaries'],
+        ['◇','Goals & operating notes','Priorities, owners and department-level context'],
+      ];
+      document.getElementById('departmentDetail').innerHTML = `<div class="department-detail-head"><div><div class="view-kicker">${escapeHtml(department.team)} team</div><h2>${escapeHtml(department.name)}</h2><p>${escapeHtml(department.focus)}</p></div><div class="department-symbol">▦</div></div><div class="department-facts"><div class="department-fact"><span>People</span><b>${people.length}</b></div><div class="department-fact"><span>AI team</span><b>${escapeHtml(department.team)}</b></div><div class="department-fact"><span>Signal</span><b>${people.filter(person => person.work_status === 'working').length} working</b></div></div><div class="department-subtitle">Department workspace</div><div class="department-subitems">${subitems.map((item,index) => isHr && index === 2 ? `<button class="department-subitem" data-open-documents><span class="subitem-icon">${item[0]}</span><span><div class="subitem-title">${item[1]}</div><div class="subitem-copy">${item[2]}</div></span></button>` : `<button class="department-subitem" data-subitem="${escapeHtml(item[1])}"><span class="subitem-icon">${item[0]}</span><span><div class="subitem-title">${item[1]}</div><div class="subitem-copy">${item[2]}</div></span></button>`).join('')}</div>${isHr ? '<button class="department-cta" data-open-documents>Open the HR personnel document vault ↗</button>' : ''}`;
+      document.querySelectorAll('[data-open-documents]').forEach(button => button.addEventListener('click', () => { clearNavSelection(); departmentsToggle.classList.add('active'); document.querySelector('.subnav-item[data-view="Documents"]').classList.add('active'); switchView('Documents', 'Personnel Documents'); }));
+      document.querySelectorAll('[data-subitem]').forEach(button => button.addEventListener('click', () => showToast(button.dataset.subitem + ' is staged inside ' + department.name + '.')));
+    }
+
+    function renderDocuments() {
+      const query = (document.getElementById('documentSearch').value || '').trim().toLowerCase();
+      const department = document.getElementById('documentDepartment').value;
+      const list = employeeData.filter(person => {
+        const haystack = [person.full_name, person.employee_id, person.role, person.department].join(' ').toLowerCase();
+        return (!query || haystack.includes(query)) && (department === 'all' || person.department === department);
+      });
+      document.getElementById('documentCount').textContent = list.length;
+      const rows = document.getElementById('documentRows');
+      if (!list.length) { rows.innerHTML = '<tr><td colspan="5" class="department-empty">No employee files match this search.</td></tr>'; return; }
+      rows.innerHTML = list.map(person => {
+        const base = 'hr/employees/' + encodeURIComponent(person.employee_id) + '/';
+        const docs = [['Personnel file','profile.md'],['Employment','documents/employment-record.md'],['Education','documents/education-record.md'],['Compensation','documents/compensation-record.md'],['Family','documents/family-record.md'],['Checklist','documents/document-checklist.md']];
+        return `<tr><td><div class="document-person"><span class="document-initials">${escapeHtml(initials(person.full_name))}</span><div><b>${escapeHtml(person.full_name)}</b><small>${escapeHtml(person.employee_id)}</small></div></div></td><td>${escapeHtml(person.department)}</td><td><div class="document-links">${docs.map(doc => `<a class="document-link" href="${base + doc[1]}">${doc[0]}</a>`).join('')}</div></td><td><span class="document-verification">● Pending originals</span></td><td><a class="document-profile" href="${base}index.html">Open profile ↗</a></td></tr>`;
+      }).join('');
+    }
+    const peopleDepartment = document.getElementById('peopleDepartment');
+    const documentDepartment = document.getElementById('documentDepartment');
+    departmentDirectory.forEach(dept => {
+      const option = `<option value="${escapeHtml(dept.name)}">${escapeHtml(dept.name)}</option>`;
+      peopleDepartment.insertAdjacentHTML('beforeend', option);
+      documentDepartment.insertAdjacentHTML('beforeend', option);
+    });
+    ['peopleSearch','peopleStatus','peopleDepartment'].forEach(id => document.getElementById(id).addEventListener('input', renderPeople));
+    ['documentSearch','documentDepartment'].forEach(id => document.getElementById(id).addEventListener('input', renderDocuments));
+    renderPeople();
+    renderDepartments();
+    renderDocuments();
+    const initialView = new URLSearchParams(window.location.search).get('view');
+    if (initialView === 'documents') { clearNavSelection(); departmentsToggle.classList.add('active'); document.querySelector('.subnav-item[data-view="Documents"]').classList.add('active'); switchView('Documents', 'Personnel Documents'); }
 
     document.querySelectorAll('.hotspot').forEach(hotspot => hotspot.addEventListener('click', () => {
       document.querySelectorAll('.hotspot').forEach(item => item.classList.remove('active'));

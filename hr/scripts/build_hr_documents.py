@@ -100,5 +100,12 @@ render();
 </script>
 </body></html>
 '''
-(ROOT.parent / "hr-documents.html").write_text(html_doc, encoding="utf-8")
-print(f"built {ROOT.parent / 'hr-documents.html'} with {len(employees)} employee files")
+# Keep the legacy direct URL inside the dashboard shell so the AI chat and navigation
+# remain present. The actual document view is rendered by dashboard.html?view=documents.
+redirect_doc = '''<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Babak's Ai Company - AI Company OS</title><meta http-equiv="refresh" content="0; url=dashboard.html?view=documents"></head>
+<body style="background:#070b16;color:#edf5ff;font-family:Arial,sans-serif;padding:30px"><p>Opening Personnel Documents…</p><p><a style="color:#55ead7" href="dashboard.html?view=documents">Continue to the document vault</a></p><script>window.location.replace('dashboard.html?view=documents');</script></body>
+</html>'''
+(ROOT.parent / "hr-documents.html").write_text(redirect_doc, encoding="utf-8")
+print(f"built dashboard-routed HR document URL for {len(employees)} employee files")

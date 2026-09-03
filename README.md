@@ -15,7 +15,7 @@
 |------|-------|
 | `index.html` | صفحه‌ی ورود جدید انگلیسی و بدون نیاز به نصب |
 | `dashboard.html` | داشبورد اصلی English با نمای 2.5D شرکت، KPIها و AI Command Center |
-| `hr-documents.html` | خزانهٔ اسناد HR با مدارک لینک‌شدهٔ هر ۷۲ پرسنل |
+| `hr-documents.html` | مسیر سازگار خزانهٔ اسناد HR؛ داخل داشبورد با پوسته و چت باز می‌شود |
 | `assets/office-map.png` | تصویر مرجع نمای سه‌بعدی دفتر شرکت |
 | `assets/babak-logo.svg` | لوگوی اختصاصی Babak AI Company |
 | `hr/index.html` | دایرکتوری گرافیکی ۷۲ پرسنل با جست‌وجو و فیلتر |
