@@ -17,6 +17,7 @@
 | `hr/index.html` | دایرکتوری گرافیکی ۷۲ پرسنل با جست‌وجو و فیلتر |
 | `hr/data/employees.json` | دادهٔ ساختاریافته برای داشبورد یا ورود بعدی به Supabase |
 | `hr/data/employees.csv` | خروجی قابل بررسی در Excel |
+| `hr/data/employees-list.md` | فهرست متنی ۷۲ ردیفی با لینک پروندهٔ هر نفر |
 | `hr/employees/BAC-xxxx/` | پروندهٔ اختصاصی، آواتار و اسناد نمونهٔ هر نفر |
 | `hr/README.md` | توضیحات کامل بستهٔ HR و هشدار حریم خصوصی |
 | `Agency-in-a-BOX-main.zip` | موتور متنی Agency-in-a-BOX برای مرحلهٔ اتصال بعدی |
