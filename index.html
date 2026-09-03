@@ -1,54 +1,248 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>کمپانی هوش مصنوعی بابک</title>
+  <meta name="theme-color" content="#070b16" />
+  <meta name="description" content="Babak's Ai Company — AI Company OS" />
+  <link rel="icon" type="image/svg+xml" href="assets/babak-logo.svg" />
+  <title>Babak's Ai Company - AI Company OS</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --ink: #eff5ff;
+      --muted: #93a4c1;
+      --quiet: #5f7190;
+      --canvas: #060a13;
+      --panel: rgba(12, 19, 34, 0.84);
+      --panel-strong: #0e172a;
+      --line: rgba(160, 188, 229, 0.17);
+      --line-bright: rgba(85, 230, 214, 0.45);
+      --cyan: #55ead7;
+      --blue: #6b9cff;
+      --violet: #a778ff;
+      --gold: #f7c96b;
+      --shadow: 0 30px 100px rgba(0, 0, 0, 0.42);
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
     body {
-      font-family: "Segoe UI", Tahoma, system-ui, sans-serif;
-      background: radial-gradient(circle at 30% 20%, #1a1a2e, #0b0d17 70%);
-      color:#eaeaf5; min-height:100vh; display:flex; align-items:center; justify-content:center;
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-    .card {
-      text-align:center; padding:48px 40px; max-width:520px; width:90%;
-      border-radius:24px; background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 20px 60px rgba(0,0,0,.5); backdrop-filter: blur(8px);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 9% 10%, rgba(97, 93, 255, .19), transparent 30%),
+        radial-gradient(circle at 92% 85%, rgba(36, 219, 205, .13), transparent 33%),
+        #060a13;
     }
-    .logo {
-      width:76px; height:76px; margin:0 auto 18px; border-radius:18px;
-      display:flex; align-items:center; justify-content:center;
-      background:linear-gradient(135deg,#6d5cff,#a855f7);
-      font-size:36px; font-weight:800;
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .09;
+      background-image: linear-gradient(rgba(255,255,255,.38) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.38) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
     }
-    h1 { font-size:26px; margin-bottom:8px; letter-spacing:.5px; }
-    .en { color:#8b8bb2; font-size:13px; margin-bottom:30px; }
-    .status {
-      display:inline-flex; align-items:center; gap:8px; padding:10px 18px;
-      border-radius:30px; background:rgba(80,220,150,.12);
-      color:#5ee6a3; font-size:14px; margin-bottom:30px;
+    a { color: inherit; }
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(390px, .78fr) minmax(500px, 1.22fr);
+      padding: 18px;
+      gap: 18px;
     }
-    .dot { width:9px; height:9px; border-radius:50%; background:#5ee6a3; box-shadow:0 0 10px #5ee6a3; animation:blink 1.2s infinite; }
-    @keyframes blink { 50%{opacity:.3} }
-    .btn {
-      display:inline-block; padding:14px 34px; border-radius:14px; font-size:16px;
-      background:linear-gradient(135deg,#6d5cff,#a855f7); color:#fff; text-decoration:none;
-      font-weight:600; box-shadow:0 8px 24px rgba(109,92,255,.4); transition:.2s;
+    .login-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: calc(100vh - 36px);
+      padding: clamp(26px, 5vw, 70px) clamp(20px, 6vw, 100px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(155deg, rgba(16, 26, 46, .88), rgba(7, 12, 23, .82));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
     }
-    .btn:hover { transform:translateY(-2px); }
-    .meta { margin-top:26px; font-size:12px; color:#7a7a9c; }
+    .login-side::after {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      right: -120px;
+      bottom: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85,234,215,.11), transparent 67%);
+      pointer-events: none;
+    }
+    .brand { display: flex; align-items: center; gap: 13px; }
+    .brand img { width: 53px; height: 53px; filter: drop-shadow(0 0 20px rgba(85,234,215,.2)); }
+    .brand-top { font-size: 11px; letter-spacing: .18em; color: var(--cyan); font-weight: 700; }
+    .brand-name { margin-top: 2px; font-size: 15px; letter-spacing: .02em; font-weight: 700; }
+    .brand-sub { margin-top: 1px; font-size: 10px; letter-spacing: .16em; color: var(--quiet); }
+    .login-content { max-width: 480px; width: 100%; margin: 7vh 0 5vh; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; color: var(--cyan); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+    h1 { margin: 20px 0 13px; max-width: 440px; font-size: clamp(34px, 4vw, 58px); letter-spacing: -.045em; line-height: 1.03; font-weight: 750; }
+    .intro { max-width: 420px; margin: 0 0 36px; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .form { display: grid; gap: 17px; }
+    .field { display: grid; gap: 8px; }
+    label { color: #ccd9ee; font-size: 12px; font-weight: 600; }
+    .field-wrap { position: relative; }
+    .field-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 17px; height: 17px; color: var(--quiet); pointer-events: none; }
+    input {
+      width: 100%;
+      height: 50px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      outline: none;
+      color: var(--ink);
+      background: rgba(6, 12, 24, .68);
+      padding: 0 15px 0 43px;
+      font: inherit;
+      font-size: 14px;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    input::placeholder { color: #607290; }
+    input:focus { border-color: var(--line-bright); box-shadow: 0 0 0 4px rgba(85,234,215,.08); background: rgba(9, 18, 34, .94); }
+    .form-row { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: -2px; }
+    .remember { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; cursor: pointer; }
+    .remember input { width: 15px; height: 15px; padding: 0; accent-color: var(--cyan); }
+    .hint { color: var(--quiet); font-size: 11px; text-align: right; }
+    button { border: 0; font: inherit; cursor: pointer; }
+    .submit {
+      height: 52px;
+      width: 100%;
+      border-radius: 13px;
+      color: #07111b;
+      background: linear-gradient(110deg, var(--cyan), #83f5ce 55%, #8cb6ff);
+      box-shadow: 0 12px 30px rgba(74, 226, 209, .18);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .01em;
+      transition: transform .2s, box-shadow .2s, filter .2s;
+    }
+    .submit:hover { transform: translateY(-2px); box-shadow: 0 16px 35px rgba(74, 226, 209, .3); filter: saturate(1.12); }
+    .submit:active { transform: translateY(0); }
+    .demo-note { display: flex; gap: 9px; align-items: flex-start; margin-top: 19px; padding: 12px 13px; border: 1px solid rgba(247,201,107,.22); border-radius: 12px; background: rgba(65, 47, 14, .23); color: #d9c78e; font-size: 11px; line-height: 1.65; }
+    .demo-note span { color: var(--gold); font-size: 15px; line-height: 1.2; }
+    .footer { display: flex; justify-content: space-between; gap: 18px; color: var(--quiet); font-size: 11px; }
+    .footer b { color: var(--muted); font-weight: 500; }
+    .visual-side {
+      position: relative;
+      min-height: calc(100vh - 36px);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: #091221;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .visual-side::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(5,10,19,.08) 15%, rgba(5,10,19,.02) 42%, rgba(5,10,19,.85) 100%); pointer-events: none; }
+    .visual-side::after { content: ""; position: absolute; inset: 0; z-index: 2; border: 1px solid rgba(105, 157, 214, .17); border-radius: inherit; pointer-events: none; }
+    .office-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.9) contrast(1.04) brightness(.86); transform: scale(1.025); }
+    .visual-top { position: absolute; z-index: 4; top: 27px; left: 29px; right: 29px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .live-chip { display: inline-flex; gap: 8px; align-items: center; padding: 8px 11px; border: 1px solid rgba(85,234,215,.34); border-radius: 999px; background: rgba(7, 16, 28, .58); color: var(--cyan); font-size: 10px; letter-spacing: .13em; font-weight: 700; backdrop-filter: blur(12px); }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); animation: pulse 1.6s infinite; }
+    .view-label { color: rgba(239,245,255,.7); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; text-shadow: 0 2px 12px #000; }
+    .visual-caption { position: absolute; z-index: 4; left: 32px; right: 32px; bottom: 31px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+    .caption-title { margin: 0 0 8px; color: #fff; font-size: clamp(24px, 3vw, 42px); letter-spacing: -.035em; line-height: 1.06; }
+    .caption-copy { max-width: 430px; margin: 0; color: #b5c2d7; font-size: 13px; line-height: 1.6; }
+    .caption-stat { flex: none; min-width: 140px; padding: 15px 17px; border: 1px solid rgba(147, 177, 220, .23); border-radius: 15px; background: rgba(7, 14, 27, .56); backdrop-filter: blur(14px); }
+    .caption-stat strong { display: block; color: var(--cyan); font-size: 25px; letter-spacing: -.04em; }
+    .caption-stat span { color: var(--muted); font-size: 10px; }
+    .floating { position: absolute; z-index: 4; right: 30px; top: 29%; width: 178px; padding: 13px; border: 1px solid rgba(159, 183, 224, .24); border-radius: 15px; background: rgba(7, 14, 27, .52); backdrop-filter: blur(13px); box-shadow: 0 15px 35px #0004; }
+    .floating-label { color: var(--quiet); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+    .floating-title { margin-top: 4px; font-size: 13px; font-weight: 700; }
+    .progress { height: 4px; margin-top: 12px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.11); }
+    .progress span { display: block; width: 78%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--violet), var(--cyan)); }
+    .floating-meta { display: flex; justify-content: space-between; margin-top: 7px; color: var(--muted); font-size: 10px; }
+    @keyframes pulse { 50% { opacity: .35; transform: scale(.72); } }
+    @media (max-width: 980px) {
+      .page { grid-template-columns: 1fr; padding: 12px; }
+      .login-side { min-height: auto; }
+      .visual-side { min-height: 580px; order: -1; }
+      .login-content { margin: 40px 0 55px; }
+    }
+    @media (max-width: 580px) {
+      .page { padding: 0; gap: 0; }
+      .login-side, .visual-side { border-radius: 0; border-left: 0; border-right: 0; }
+      .visual-side { min-height: 440px; }
+      .visual-caption { left: 20px; right: 20px; bottom: 22px; display: block; }
+      .caption-stat { margin-top: 16px; width: 150px; }
+      .floating { right: 20px; top: 30%; }
+      .visual-top { top: 19px; left: 20px; right: 20px; }
+      .login-side { padding: 25px 22px 22px; }
+      .footer { align-items: flex-start; flex-direction: column; }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="logo">ب</div>
-    <h1>کمپانی هوش مصنوعی بابک</h1>
-    <div class="en">Babak AI Company</div>
-    <div class="status"><span class="dot"></span> سیستم آماده است — بدون نیاز به نصب</div>
-    <a class="btn" href="hr/index.html">ورود به دایرکتوری HR</a>
-    <div class="meta">✅ نسخهٔ اولیه فعال است — دایرکتوری ۷۲ نفره منابع انسانی آمادهٔ مشاهده است</div>
-  </div>
+  <main class="page">
+    <section class="login-side" aria-label="Sign in">
+      <div class="brand">
+        <img src="assets/babak-logo.svg" alt="Babak AI Company logo" />
+        <div>
+          <div class="brand-top">BABAK AI COMPANY</div>
+          <div class="brand-name">Babak's Ai Company</div>
+          <div class="brand-sub">AI COMPANY OS</div>
+        </div>
+      </div>
+
+      <div class="login-content">
+        <div class="eyebrow">Private workspace</div>
+        <h1>One command center for a smarter company.</h1>
+        <p class="intro">Bring your people, projects, intelligence and decisions into one calm operating layer.</p>
+        <form class="form" id="loginForm">
+          <div class="field">
+            <label for="email">Work email</label>
+            <div class="field-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+              <input id="email" name="email" type="email" value="ceo@babak-ai.company" autocomplete="email" placeholder="you@company.com" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="password">Access key</label>
+            <div class="field-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg>
+              <input id="password" name="password" type="password" value="demo-access" autocomplete="current-password" placeholder="Enter your access key" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="remember"><input type="checkbox" checked /> Remember this device</label>
+            <span class="hint">Secure demo access</span>
+          </div>
+          <button class="submit" type="submit">Enter the command center <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="demo-note"><span>✦</span><div><strong>Demo workspace</strong><br />No account setup is required for this first static release. Authentication and private data controls will be connected in the next phase.</div></div>
+      </div>
+
+      <div class="footer"><span>© 2026 <b>Babak's Ai Company</b></span><span>Browser-first · No installation</span></div>
+    </section>
+
+    <section class="visual-side" aria-label="Company workspace preview">
+      <img class="office-image" src="assets/office-map.png" alt="Aerial 3D view of the Babak AI Company workspace" />
+      <div class="visual-top"><span class="live-chip"><i class="live-dot"></i> LIVE WORKSPACE</span><span class="view-label">AI COMPANY OS / 3D OVERVIEW</span></div>
+      <div class="floating"><div class="floating-label">Workspace health</div><div class="floating-title">Intelligence is online</div><div class="progress"><span></span></div><div class="floating-meta"><span>Connected</span><b>78%</b></div></div>
+      <div class="visual-caption"><div><h2 class="caption-title">See the whole company<br />in one view.</h2><p class="caption-copy">A living map of teams, rooms and decisions — designed to make the invisible work visible.</p></div><div class="caption-stat"><strong>12</strong><span>connected departments</span></div></div>
+    </section>
+  </main>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      localStorage.setItem('babak-os-session', 'demo');
+      window.location.href = 'dashboard.html';
+    });
+  </script>
 </body>
 </html>

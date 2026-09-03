@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070b16" />
+  <link rel="icon" type="image/svg+xml" href="assets/babak-logo.svg" />
+  <title>Babak's Ai Company - AI Company OS</title>
+  <style>
+    :root {
+      --bg: #070b16;
+      --bg-soft: #0a1020;
+      --side: #0a1120;
+      --surface: rgba(15, 25, 44, .9);
+      --surface-2: rgba(18, 31, 55, .78);
+      --surface-3: #12223b;
+      --line: rgba(156, 187, 231, .16);
+      --line-strong: rgba(96, 219, 211, .38);
+      --ink: #edf4ff;
+      --muted: #93a5c3;
+      --quiet: #607392;
+      --cyan: #55ead7;
+      --blue: #73a2ff;
+      --purple: #ae83ff;
+      --pink: #ff77a9;
+      --gold: #f5ca6b;
+      --green: #5ce6a5;
+      --danger: #ff7798;
+      --shadow: 0 22px 55px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: radial-gradient(circle at 24% -10%, #1a2b4a 0, var(--bg) 38%, #050810 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .07;
+      background-image: linear-gradient(rgba(255,255,255,.55) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.55) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 76%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .app-shell { display: grid; grid-template-columns: 244px minmax(0, 1fr); min-height: 100vh; }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 19px;
+      padding: 22px 15px 16px;
+      background: linear-gradient(180deg, rgba(10,18,33,.98), rgba(7,12,23,.97));
+      border-right: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; padding: 0 9px 4px; }
+    .brand img { width: 38px; height: 38px; filter: drop-shadow(0 0 13px rgba(85,234,215,.17)); }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: .04em; white-space: nowrap; }
+    .brand-sub { color: var(--cyan); font-size: 8px; letter-spacing: .18em; margin-top: 1px; }
+    .workspace { padding: 12px; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, rgba(28,46,77,.55), rgba(10,18,33,.45)); }
+    .workspace-label { color: var(--quiet); font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
+    .workspace-row { display: flex; align-items: center; justify-content: space-between; gap: 7px; margin-top: 5px; }
+    .workspace-title { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; }
+    .workspace-mark { width: 21px; height: 21px; display: grid; place-items: center; border-radius: 7px; color: #07111c; background: linear-gradient(135deg, var(--cyan), var(--purple)); font-size: 11px; font-weight: 900; }
+    .chev { color: var(--muted); font-size: 14px; }
+    .nav-title { padding: 0 11px; color: var(--quiet); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+    .nav-list { display: grid; gap: 3px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; width: 100%; border: 1px solid transparent; border-radius: 11px; padding: 9px 10px; color: var(--muted); background: transparent; text-align: left; font-size: 12px; transition: .18s ease; }
+    .nav-item:hover { color: var(--ink); background: rgba(41,67,104,.31); }
+    .nav-item.active { color: #eafffc; background: linear-gradient(90deg, rgba(55,196,182,.18), rgba(83,115,206,.1)); border-color: rgba(85,234,215,.25); box-shadow: inset 3px 0 0 var(--cyan); }
+    .nav-icon { width: 22px; height: 22px; display: grid; place-items: center; color: var(--quiet); border-radius: 7px; background: rgba(130,161,205,.09); font-size: 12px; }
+    .nav-item.active .nav-icon { color: var(--cyan); background: rgba(85,234,215,.12); }
+    .nav-label { flex: 1; }
+    .nav-count { color: var(--quiet); font-size: 10px; }
+    .sidebar-bottom { margin-top: auto; }
+    .system-card { padding: 12px; border: 1px solid rgba(85,234,215,.2); border-radius: 15px; background: linear-gradient(145deg, rgba(21,66,73,.33), rgba(10,24,36,.36)); }
+    .system-head { display: flex; align-items: center; justify-content: space-between; color: var(--cyan); font-size: 10px; font-weight: 700; }
+    .system-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
+    .system-copy { margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.55; }
+    .sidebar-legal { margin-top: 10px; padding: 0 5px; color: var(--quiet); font-size: 9px; line-height: 1.5; }
+    .main { min-width: 0; padding: 0 30px 35px; }
+    .topbar { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--line); }
+    .breadcrumbs { display: flex; align-items: center; gap: 8px; color: var(--quiet); font-size: 11px; }
+    .breadcrumbs strong { color: var(--ink); font-weight: 650; }
+    .crumb-arrow { color: var(--quiet); }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+    .search { position: relative; width: min(290px, 30vw); }
+    .search input { width: 100%; height: 37px; padding: 0 36px 0 60px; border: 1px solid var(--line); outline: 0; color: var(--ink); border-radius: 10px; background: rgba(8,14,27,.56); font-size: 11px; }
+    .search input:focus { border-color: var(--line-strong); box-shadow: 0 0 0 3px rgba(85,234,215,.06); }
+    .search-icon { position: absolute; left: 13px; top: 9px; color: var(--quiet); font-size: 14px; }
+    .shortcut { position: absolute; right: 8px; top: 7px; padding: 3px 5px; border: 1px solid var(--line); border-radius: 5px; color: var(--quiet); font-size: 9px; }
+    .icon-button { position: relative; width: 37px; height: 37px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); background: rgba(8,14,27,.5); }
+    .icon-button:hover { color: var(--cyan); border-color: var(--line-strong); }
+    .notification-dot { position: absolute; top: 7px; right: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 8px var(--pink); }
+    .profile { display: flex; align-items: center; gap: 8px; margin-left: 2px; padding-left: 11px; border-left: 1px solid var(--line); }
+    .profile-avatar { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(85,234,215,.35); border-radius: 10px; color: var(--cyan); background: linear-gradient(135deg, #183c50, #39246b); font-size: 12px; font-weight: 800; }
+    .profile-name { font-size: 11px; font-weight: 700; }
+    .profile-role { margin-top: 1px; color: var(--quiet); font-size: 9px; }
+    .content { max-width: 1600px; margin: 0 auto; padding-top: 29px; }
+    .welcome { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 20px; overflow: hidden; padding: 23px 25px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(105deg, rgba(24,44,76,.74), rgba(16,25,47,.52) 62%, rgba(29,41,79,.45)); box-shadow: var(--shadow); }
+    .welcome::after { content: ""; position: absolute; width: 400px; height: 240px; right: -110px; top: -110px; border-radius: 50%; background: radial-gradient(circle, rgba(110,130,255,.23), transparent 67%); pointer-events: none; }
+    .welcome-copy { position: relative; z-index: 1; }
+    .welcome-eyebrow { color: var(--cyan); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
+    .welcome h1 { margin: 6px 0 4px; font-size: clamp(23px, 3vw, 31px); letter-spacing: -.035em; line-height: 1.15; }
+    .welcome p { margin: 0; color: var(--muted); font-size: 12px; }
+    .primary-button { position: relative; z-index: 1; flex: none; display: inline-flex; align-items: center; gap: 9px; min-height: 41px; padding: 0 15px; border: 1px solid rgba(85,234,215,.4); border-radius: 11px; color: #08111c; background: linear-gradient(110deg, var(--cyan), #8acbff); box-shadow: 0 9px 24px rgba(50,214,200,.16); font-size: 11px; font-weight: 800; }
+    .primary-button:hover { transform: translateY(-1px); box-shadow: 0 13px 30px rgba(50,214,200,.26); }
+    .kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+    .kpi { position: relative; min-width: 0; overflow: hidden; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(145deg, rgba(18,31,54,.82), rgba(11,18,33,.74)); }
+    .kpi::after { content: ""; position: absolute; width: 100px; height: 100px; top: -44px; right: -30px; border-radius: 50%; background: var(--accent); opacity: .1; }
+    .kpi-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 10px; }
+    .kpi-icon { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 8px; color: var(--accent); background: color-mix(in srgb, var(--accent) 11%, transparent); font-size: 12px; }
+    .kpi-value { margin-top: 10px; color: var(--ink); font-size: 25px; font-weight: 750; letter-spacing: -.04em; }
+    .kpi-value small { color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: 0; }
+    .kpi-foot { display: flex; align-items: center; gap: 5px; margin-top: 3px; font-size: 9px; }
+    .positive { color: var(--green); }
+    .neutral { color: var(--muted); }
+    .dashboard-grid { display: grid; grid-template-columns: minmax(0, 1.63fr) minmax(315px, .8fr); gap: 14px; margin-top: 14px; }
+    .panel { min-width: 0; border: 1px solid var(--line); border-radius: 19px; background: linear-gradient(145deg, rgba(16,27,47,.9), rgba(10,17,31,.87)); box-shadow: var(--shadow); }
+    .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; padding: 18px 19px 13px; }
+    .panel-kicker { color: var(--cyan); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+    .panel-title { margin-top: 4px; color: var(--ink); font-size: 15px; font-weight: 750; letter-spacing: -.02em; }
+    .panel-sub { margin-top: 2px; color: var(--muted); font-size: 10px; }
+    .panel-action { border: 0; color: var(--muted); background: transparent; font-size: 10px; }
+    .panel-action:hover { color: var(--cyan); }
+    .map-panel { overflow: hidden; }
+    .map-controls { display: flex; align-items: center; gap: 6px; padding: 0 19px 14px; }
+    .map-mode { padding: 5px 8px; border: 1px solid var(--line); border-radius: 7px; color: var(--muted); background: rgba(7,12,24,.45); font-size: 9px; }
+    .map-mode.active { color: var(--cyan); border-color: rgba(85,234,215,.34); background: rgba(85,234,215,.08); }
+    .map-mode:hover { border-color: var(--line-strong); }
+    .map-spacer { flex: 1; }
+    .map-stage { position: relative; aspect-ratio: 1.49 / 1; min-height: 390px; overflow: hidden; background: #071221; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .map-stage::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(7,12,24,.05), rgba(7,12,24,.1) 53%, rgba(7,12,24,.66)); pointer-events: none; }
+    .map-stage::after { content: ""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(circle at 50% 50%, transparent 35%, rgba(4,9,18,.35) 100%); pointer-events: none; }
+    .map-image { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.88) contrast(1.06) brightness(.78); }
+    .map-grid { position: absolute; z-index: 2; inset: 0; pointer-events: none; opacity: .12; background-image: linear-gradient(rgba(116,185,222,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(116,185,222,.5) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(ellipse at center, black, transparent 72%); }
+    .map-status { position: absolute; z-index: 4; left: 15px; top: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 7px 9px; border: 1px solid rgba(85,234,215,.3); border-radius: 8px; color: #bdfcf1; background: rgba(7,17,28,.63); backdrop-filter: blur(8px); font-size: 9px; }
+    .map-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 9px var(--green); }
+    .hotspot { position: absolute; z-index: 5; display: flex; align-items: center; gap: 6px; padding: 5px 7px 5px 5px; border: 1px solid rgba(149, 205, 225, .22); border-radius: 8px; color: #ecf8ff; background: rgba(7, 15, 28, .7); backdrop-filter: blur(7px); font-size: 8px; white-space: nowrap; cursor: pointer; transition: .18s ease; }
+    .hotspot:hover, .hotspot.active { color: #07111b; border-color: var(--cyan); background: var(--cyan); box-shadow: 0 0 19px rgba(85,234,215,.38); transform: translateY(-2px); }
+    .hotspot-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent, var(--cyan)); box-shadow: 0 0 9px var(--accent, var(--cyan)); }
+    .hotspot:hover .hotspot-dot, .hotspot.active .hotspot-dot { background: #07111b; box-shadow: none; }
+    .hotspot.executive { left: 42%; top: 29%; --accent: var(--gold); }
+    .hotspot.strategy { left: 34%; top: 10%; --accent: var(--purple); }
+    .hotspot.marketing { left: 22%; top: 18%; --accent: var(--pink); }
+    .hotspot.creative { right: 7%; top: 17%; --accent: var(--cyan); }
+    .hotspot.people { left: 10%; top: 37%; --accent: var(--green); }
+    .hotspot.research { right: 8%; top: 40%; --accent: var(--blue); }
+    .hotspot.product { left: 33%; bottom: 28%; --accent: var(--purple); }
+    .hotspot.ops { right: 26%; bottom: 24%; --accent: var(--gold); }
+    .map-readout { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 19px; background: rgba(8,14,26,.56); }
+    .readout-room { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .readout-marker { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+    .readout-name { overflow: hidden; color: var(--ink); font-size: 11px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .readout-desc { color: var(--muted); font-size: 10px; }
+    .readout-meta { flex: none; color: var(--quiet); font-size: 9px; }
+    .ai-panel { display: flex; flex-direction: column; min-height: 100%; overflow: hidden; }
+    .ai-header { display: flex; align-items: center; gap: 10px; padding: 18px 19px 15px; border-bottom: 1px solid var(--line); }
+    .ai-orb { position: relative; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(85,234,215,.42); border-radius: 12px; color: #07111c; background: conic-gradient(from 180deg, var(--cyan), var(--purple), var(--blue), var(--cyan)); box-shadow: 0 0 20px rgba(85,234,215,.13); font-size: 15px; font-weight: 900; }
+    .ai-orb::after { content: ""; position: absolute; inset: 5px; border-radius: 8px; background: #10213b; }
+    .ai-orb span { position: relative; z-index: 1; }
+    .ai-header-copy { min-width: 0; flex: 1; }
+    .ai-title { font-size: 13px; font-weight: 800; }
+    .ai-status { display: flex; align-items: center; gap: 5px; margin-top: 2px; color: var(--green); font-size: 9px; }
+    .ai-status i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+    .ai-more { color: var(--muted); font-size: 17px; }
+    .chat { display: grid; gap: 12px; padding: 17px 19px; }
+    .message { max-width: 92%; padding: 10px 11px; border-radius: 11px; font-size: 10px; line-height: 1.6; }
+    .message.ai { border: 1px solid rgba(116,169,218,.14); border-top-left-radius: 3px; color: #ccd9ec; background: rgba(28,50,80,.44); }
+    .message.user { margin-left: auto; border: 1px solid rgba(85,234,215,.19); border-bottom-right-radius: 3px; color: #d8fff7; background: rgba(36,105,102,.26); }
+    .message b { color: var(--cyan); font-weight: 700; }
+    .quick-label { padding: 0 19px 8px; color: var(--quiet); font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
+    .quick-actions { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 19px 15px; }
+    .quick { padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); background: rgba(9,17,31,.5); font-size: 9px; }
+    .quick:hover { color: var(--cyan); border-color: rgba(85,234,215,.35); }
+    .chat-form { display: flex; gap: 7px; margin-top: auto; padding: 13px 19px 18px; border-top: 1px solid var(--line); }
+    .chat-form input { min-width: 0; flex: 1; height: 36px; padding: 0 10px; border: 1px solid var(--line); border-radius: 9px; outline: 0; color: var(--ink); background: rgba(6,12,24,.62); font-size: 10px; }
+    .chat-form input:focus { border-color: var(--line-strong); }
+    .send { width: 36px; height: 36px; border: 1px solid rgba(85,234,215,.33); border-radius: 9px; color: #07111b; background: var(--cyan); font-size: 13px; font-weight: 900; }
+    .lower-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 14px; margin-top: 14px; }
+    .lower-panel { min-height: 250px; }
+    .task-body { padding: 0 19px 18px; }
+    .task-summary { display: flex; gap: 18px; align-items: flex-end; margin-bottom: 17px; }
+    .task-big { color: var(--ink); font-size: 29px; font-weight: 750; letter-spacing: -.05em; line-height: 1; }
+    .task-big small { color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: 0; }
+    .task-copy { color: var(--muted); font-size: 10px; }
+    .task-list { display: grid; gap: 13px; }
+    .task-row { display: grid; grid-template-columns: 112px minmax(0,1fr) 35px; align-items: center; gap: 10px; }
+    .task-label { color: var(--muted); font-size: 10px; }
+    .task-track { height: 7px; overflow: hidden; border-radius: 99px; background: rgba(154,182,220,.1); }
+    .task-track span { display: block; height: 100%; border-radius: inherit; background: var(--bar, var(--cyan)); }
+    .task-number { color: var(--ink); font-size: 10px; font-weight: 700; text-align: right; }
+    .activity-list { display: grid; padding: 0 19px 17px; }
+    .activity { position: relative; display: grid; grid-template-columns: 27px minmax(0,1fr) auto; gap: 9px; padding: 10px 0; border-bottom: 1px solid rgba(156,187,231,.09); }
+    .activity:last-child { border-bottom: 0; }
+    .activity-avatar { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 8px; color: #09121f; background: var(--activity-color, var(--cyan)); font-size: 9px; font-weight: 800; }
+    .activity-text { min-width: 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
+    .activity-text b { color: var(--ink); font-weight: 650; }
+    .activity-time { color: var(--quiet); font-size: 9px; white-space: nowrap; }
+    .toast { position: fixed; right: 25px; bottom: 24px; z-index: 30; max-width: 330px; padding: 12px 14px; border: 1px solid rgba(85,234,215,.34); border-radius: 12px; color: #dffefa; background: rgba(11,29,39,.94); box-shadow: 0 15px 40px #0008; font-size: 11px; transform: translateY(20px); opacity: 0; pointer-events: none; transition: .22s ease; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: none; place-items: center; padding: 24px; background: rgba(2,6,14,.76); backdrop-filter: blur(9px); }
+    .modal-backdrop.open { display: grid; }
+    .modal { width: min(900px, 100%); max-height: 90vh; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 20px; background: #0b1425; box-shadow: 0 30px 100px #0009; }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 15px 18px; border-bottom: 1px solid var(--line); }
+    .modal-head strong { font-size: 14px; }
+    .close { width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); background: transparent; }
+    .modal-body { padding: 14px; }
+    .modal-map { display: block; width: 100%; max-height: 68vh; object-fit: contain; border-radius: 13px; filter: saturate(.9) brightness(.9); }
+    .modal-caption { margin: 10px 3px 1px; color: var(--muted); font-size: 10px; }
+    @media (max-width: 1280px) { .kpis { grid-template-columns: repeat(3, minmax(0,1fr)); } .dashboard-grid { grid-template-columns: minmax(0, 1.35fr) minmax(300px, .82fr); } }
+    @media (max-width: 1040px) { .app-shell { grid-template-columns: 74px minmax(0,1fr); } .sidebar { padding: 19px 10px; } .brand { justify-content: center; padding: 0 0 4px; } .brand > div, .workspace, .nav-title, .nav-label, .nav-count, .system-card, .sidebar-legal { display: none; } .nav-item { justify-content: center; padding: 10px 8px; } .nav-icon { width: 28px; height: 28px; } .main { padding: 0 21px 30px; } }
+    @media (max-width: 820px) { .topbar { height: 70px; } .search { width: 40px; } .search input { opacity: 0; padding: 0; cursor: pointer; } .search-icon { left: 12px; } .shortcut { display: none; } .profile-name, .profile-role { display: none; } .welcome { align-items: flex-start; flex-direction: column; } .dashboard-grid, .lower-grid { grid-template-columns: 1fr; } .ai-panel { min-height: 480px; } .map-stage { min-height: 330px; } }
+    @media (max-width: 560px) { .app-shell { grid-template-columns: 1fr; } .sidebar { position: fixed; z-index: 10; left: 0; right: 0; bottom: 0; top: auto; width: 100%; height: 62px; display: flex; flex-direction: row; align-items: center; justify-content: space-around; padding: 7px 8px; border-top: 1px solid var(--line); border-right: 0; } .brand, .sidebar-bottom, .workspace, .nav-title { display: none; } .nav-list { display: flex; width: 100%; align-items: center; justify-content: space-around; gap: 3px; } .nav-item { width: auto; padding: 5px; } .nav-item:nth-child(n+6) { display: none; } .nav-icon { width: 34px; height: 34px; } .main { padding: 0 13px 85px; } .topbar { gap: 8px; } .breadcrumbs { font-size: 10px; } .top-actions { gap: 5px; } .profile { padding-left: 6px; } .content { padding-top: 18px; } .kpis { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; } .kpi { padding: 12px; } .kpi-value { font-size: 22px; } .kpi:nth-child(5) { grid-column: 1 / -1; } .panel-head { padding: 15px 14px 11px; } .map-controls, .task-body, .activity-list { padding-left: 14px; padding-right: 14px; } .map-stage { min-height: 275px; } .hotspot { padding: 4px; font-size: 0; } .hotspot-dot { width: 8px; height: 8px; } .hotspot.executive { left: 40%; } .hotspot.strategy { left: 31%; } .hotspot.marketing { left: 18%; } .hotspot.creative { right: 5%; } .hotspot.people { left: 8%; } .hotspot.research { right: 6%; } .hotspot.product { left: 30%; } .hotspot.ops { right: 20%; } .readout-meta { display: none; } .lower-panel { min-height: 220px; } }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html" aria-label="Go to login">
+        <img src="assets/babak-logo.svg" alt="" />
+        <div><div class="brand-name">BABAK AI COMPANY</div><div class="brand-sub">AI COMPANY OS</div></div>
+      </a>
+      <div class="workspace"><div class="workspace-label">Current workspace</div><div class="workspace-row"><div class="workspace-title"><span class="workspace-mark">B</span> Babak AI · HQ</div><span class="chev">⌄</span></div></div>
+      <div class="nav-title">Command center</div>
+      <nav class="nav-list" aria-label="Primary navigation">
+        <button class="nav-item active" data-section="Overview"><span class="nav-icon">◈</span><span class="nav-label">Overview</span></button>
+        <button class="nav-item" data-section="People"><span class="nav-icon">◎</span><span class="nav-label">People</span><span class="nav-count">72</span></button>
+        <button class="nav-item" data-section="Departments"><span class="nav-icon">▦</span><span class="nav-label">Departments</span><span class="nav-count">12</span></button>
+        <button class="nav-item" data-section="Workflows"><span class="nav-icon">⌁</span><span class="nav-label">Workflows</span><span class="nav-count">9</span></button>
+        <button class="nav-item" data-section="Tasks"><span class="nav-icon">✓</span><span class="nav-label">Tasks</span><span class="nav-count">18</span></button>
+        <button class="nav-item" data-section="Projects"><span class="nav-icon">◇</span><span class="nav-label">Projects</span></button>
+        <button class="nav-item" data-section="Reports"><span class="nav-icon">▤</span><span class="nav-label">Reports</span><span class="nav-count">8</span></button>
+        <button class="nav-item" data-section="Calendar"><span class="nav-icon">▣</span><span class="nav-label">Calendar</span></button>
+      </nav>
+      <div class="nav-title">Workspace</div>
+      <nav class="nav-list">
+        <button class="nav-item" data-section="Analytics"><span class="nav-icon">◒</span><span class="nav-label">Analytics</span></button>
+        <button class="nav-item" data-section="Settings"><span class="nav-icon">⚙</span><span class="nav-label">Settings</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="system-card"><div class="system-head"><span><i class="system-dot"></i> AI engine online</span><span>v0.1</span></div><div class="system-copy">Agency-in-a-BOX is mapped to your company OS and ready for workflows.</div></div>
+        <div class="sidebar-legal">Demo environment · Built for Babak's Ai Company</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="breadcrumbs"><span>Company OS</span><span class="crumb-arrow">/</span><strong id="sectionName">Overview</strong></div>
+        <div class="top-actions">
+          <div class="search"><span class="search-icon">⌕</span><input id="globalSearch" type="search" placeholder="Search the company" /><span class="shortcut">⌘ K</span></div>
+          <button class="icon-button" id="notificationButton" aria-label="Notifications">♢<i class="notification-dot"></i></button>
+          <div class="profile"><div class="profile-avatar">B</div><div><div class="profile-name">Babak Moradvand</div><div class="profile-role">Chief Executive Officer</div></div><span class="chev">⌄</span></div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="welcome">
+          <div class="welcome-copy"><div class="welcome-eyebrow">Thursday · September 3, 2026</div><h1>Good morning, Babak.</h1><p>Your company is moving with focus today. Here is the signal that matters.</p></div>
+          <button class="primary-button" id="openAi">Open AI Command Center <span>↗</span></button>
+        </section>
+
+        <section class="kpis" aria-label="Company metrics">
+          <div class="kpi" style="--accent:var(--cyan)"><div class="kpi-head"><span>Team members</span><span class="kpi-icon">◎</span></div><div class="kpi-value">72</div><div class="kpi-foot positive">↗ 4.2% <span>this quarter</span></div></div>
+          <div class="kpi" style="--accent:var(--purple)"><div class="kpi-head"><span>Departments</span><span class="kpi-icon">▦</span></div><div class="kpi-value">12</div><div class="kpi-foot neutral">8 AI teams mapped</div></div>
+          <div class="kpi" style="--accent:var(--blue)"><div class="kpi-head"><span>Active tasks</span><span class="kpi-icon">✓</span></div><div class="kpi-value">18 <small>/ 42 total</small></div><div class="kpi-foot positive">6 due today</div></div>
+          <div class="kpi" style="--accent:var(--gold)"><div class="kpi-head"><span>Approvals</span><span class="kpi-icon">◌</span></div><div class="kpi-value">6</div><div class="kpi-foot" style="color:var(--gold)">2 need your attention</div></div>
+          <div class="kpi" style="--accent:var(--pink)"><div class="kpi-head"><span>Reports</span><span class="kpi-icon">▤</span></div><div class="kpi-value">8</div><div class="kpi-foot positive">3 generated by AI</div></div>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel map-panel">
+            <div class="panel-head"><div><div class="panel-kicker">Spatial intelligence</div><div class="panel-title">Company at a glance</div><div class="panel-sub">Explore the operating map of your organization</div></div><button class="panel-action" id="fullMap">View full map ↗</button></div>
+            <div class="map-controls"><button class="map-mode active">2.5D view</button><button class="map-mode" id="liveLayer">Live layer</button><span class="map-spacer"></span><span style="color:var(--quiet);font-size:9px">Updated 2 min ago</span></div>
+            <div class="map-stage" id="mapStage">
+              <img class="map-image" src="assets/office-map.png" alt="3D isometric office map of the company" />
+              <div class="map-grid"></div><div class="map-status"><i></i> 12 rooms · 72 people · live</div>
+              <button class="hotspot executive active" data-room="Executive Suite" data-copy="Leadership decisions and company priorities" data-team="3 people online"><span class="hotspot-dot"></span>Executive Suite</button>
+              <button class="hotspot strategy" data-room="Marketing Strategy" data-copy="Strategy, planning and creative command" data-team="11 people online"><span class="hotspot-dot"></span>Marketing Strategy</button>
+              <button class="hotspot marketing" data-room="People & Talent" data-copy="Hiring, culture and team enablement" data-team="6 people online"><span class="hotspot-dot"></span>People & Talent</button>
+              <button class="hotspot creative" data-room="Creative Lab" data-copy="Brand, content and creative production" data-team="8 people online"><span class="hotspot-dot"></span>Creative Lab</button>
+              <button class="hotspot people" data-room="Digital Production" data-copy="Campaign execution and content studio" data-team="10 people online"><span class="hotspot-dot"></span>Digital Production</button>
+              <button class="hotspot research" data-room="Market Research" data-copy="Consumer insights and competitive intelligence" data-team="7 people online"><span class="hotspot-dot"></span>Market Research</button>
+              <button class="hotspot product" data-room="Product Studio" data-copy="Product development, QA and delivery" data-team="8 people online"><span class="hotspot-dot"></span>Product Studio</button>
+              <button class="hotspot ops" data-room="Marketing Tech & Ops" data-copy="Infrastructure, operations and reporting" data-team="9 people online"><span class="hotspot-dot"></span>Marketing Tech</button>
+            </div>
+            <div class="map-readout"><div class="readout-room"><i class="readout-marker"></i><div><div class="readout-name" id="roomName">Executive Suite</div><div class="readout-desc" id="roomCopy">Leadership decisions and company priorities</div></div></div><div class="readout-meta" id="roomTeam">3 people online</div></div>
+          </article>
+
+          <article class="panel ai-panel" id="aiPanel">
+            <div class="ai-header"><div class="ai-orb"><span>✦</span></div><div class="ai-header-copy"><div class="ai-title">AI Command Center</div><div class="ai-status"><i></i> Agency intelligence ready</div></div><button class="ai-more" aria-label="More AI options">•••</button></div>
+            <div class="chat" id="chat"><div class="message ai">Good morning, Babak. I have scanned the company pulse. <b>Marketing momentum is up 12%</b>, while two approvals are waiting for your decision.</div><div class="message user">Show me what needs my attention today.</div><div class="message ai">Start with <b>Campaign Atlas</b> approval and the Product Studio delivery risk. I can prepare a decision brief for both.</div></div>
+            <div class="quick-label">Quick commands</div>
+            <div class="quick-actions"><button class="quick" data-command="Summarize my day">Summarize my day</button><button class="quick" data-command="Show risks">Show risks</button><button class="quick" data-command="Run a workflow">Run a workflow</button><button class="quick" data-command="Prepare a report">Prepare a report</button></div>
+            <form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Ask the company OS anything…" autocomplete="off" /><button class="send" type="submit" aria-label="Send">↗</button></form>
+          </article>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel lower-panel"><div class="panel-head"><div><div class="panel-kicker">Execution pulse</div><div class="panel-title">Work moving through the company</div><div class="panel-sub">A live view of the current task pipeline</div></div><button class="panel-action" data-action="tasks">View tasks ↗</button></div><div class="task-body"><div class="task-summary"><div class="task-big">42 <small>total tasks</small></div><div class="task-copy">18 active · 15 completed this week<br /><span class="positive">+8.6% velocity</span></div></div><div class="task-list"><div class="task-row"><span class="task-label">In progress</span><div class="task-track"><span style="width:64%;--bar:var(--cyan)"></span></div><span class="task-number">18</span></div><div class="task-row"><span class="task-label">In review</span><div class="task-track"><span style="width:39%;--bar:var(--purple)"></span></div><span class="task-number">6</span></div><div class="task-row"><span class="task-label">Blocked</span><div class="task-track"><span style="width:18%;--bar:var(--pink)"></span></div><span class="task-number">3</span></div><div class="task-row"><span class="task-label">Completed</span><div class="task-track"><span style="width:84%;--bar:var(--green)"></span></div><span class="task-number">15</span></div></div></div></article>
+          <article class="panel lower-panel"><div class="panel-head"><div><div class="panel-kicker">Live feed</div><div class="panel-title">Company activity</div><div class="panel-sub">The latest signal from your teams</div></div><button class="panel-action" data-action="activity">See all ↗</button></div><div class="activity-list" id="activityList"><div class="activity"><div class="activity-avatar" style="--activity-color:var(--purple)">M</div><div class="activity-text"><b>Marketing</b> completed the Atlas campaign brief</div><div class="activity-time">8m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--cyan)">P</div><div class="activity-text"><b>Product Studio</b> moved Sprint 04 to review</div><div class="activity-time">21m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--gold)">F</div><div class="activity-text"><b>Finance</b> uploaded the August runway report</div><div class="activity-time">46m</div></div><div class="activity"><div class="activity-avatar" style="--activity-color:var(--pink)">H</div><div class="activity-text"><b>People & Talent</b> welcomed a new team member</div><div class="activity-time">1h</div></div></div></article>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapModalTitle"><div class="modal"><div class="modal-head"><strong id="mapModalTitle">Company 3D workspace</strong><button class="close" id="closeMap" aria-label="Close">×</button></div><div class="modal-body"><img class="modal-map" src="assets/office-map.png" alt="Full 3D isometric company workspace map" /><div class="modal-caption">Reference workspace image · interactive room layers will connect to live company data in the next release.</div></div></div></div>
+
+  <script>
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+      item.classList.add('active');
+      const section = item.dataset.section;
+      document.getElementById('sectionName').textContent = section;
+      if (section !== 'Overview') showToast(section + ' module is staged for the next build. The overview is live now.');
+    }));
+
+    document.querySelectorAll('.hotspot').forEach(hotspot => hotspot.addEventListener('click', () => {
+      document.querySelectorAll('.hotspot').forEach(item => item.classList.remove('active'));
+      hotspot.classList.add('active');
+      document.getElementById('roomName').textContent = hotspot.dataset.room;
+      document.getElementById('roomCopy').textContent = hotspot.dataset.copy;
+      document.getElementById('roomTeam').textContent = hotspot.dataset.team;
+    }));
+
+    document.getElementById('liveLayer').addEventListener('click', function () {
+      this.classList.toggle('active');
+      document.getElementById('mapStage').classList.toggle('live-mode');
+      showToast(this.classList.contains('active') ? 'Live activity layer enabled for the workspace map.' : '2.5D workspace view restored.');
+    });
+
+    const mapModal = document.getElementById('mapModal');
+    document.getElementById('fullMap').addEventListener('click', () => mapModal.classList.add('open'));
+    document.getElementById('closeMap').addEventListener('click', () => mapModal.classList.remove('open'));
+    mapModal.addEventListener('click', event => { if (event.target === mapModal) mapModal.classList.remove('open'); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') mapModal.classList.remove('open'); });
+
+    const chat = document.getElementById('chat');
+    const chatInput = document.getElementById('chatInput');
+    function addMessage(text, type) {
+      const message = document.createElement('div');
+      message.className = 'message ' + type;
+      message.textContent = text;
+      chat.appendChild(message);
+      chat.scrollTop = chat.scrollHeight;
+    }
+    function answerFor(text) {
+      const value = text.toLowerCase();
+      if (value.includes('risk')) return 'I found 3 blocked tasks. The largest signal is the Product Studio delivery risk. I can assemble a mitigation brief.';
+      if (value.includes('report')) return 'I can prepare an executive snapshot with people, task velocity, approvals and ROI signals.';
+      if (value.includes('workflow')) return 'Nine workflows are mapped from Agency-in-a-BOX. Tell me a client, team or workflow name to begin.';
+      if (value.includes('day') || value.includes('today')) return 'Your focus today: 2 approvals, 6 tasks due, and one product delivery decision. Estimated decision time: 18 minutes.';
+      return 'I have queued that request for the company OS. In the connected release, I will use your private company data and return a sourced answer.';
+    }
+    document.getElementById('chatForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const value = chatInput.value.trim();
+      if (!value) return;
+      addMessage(value, 'user');
+      chatInput.value = '';
+      setTimeout(() => addMessage(answerFor(value), 'ai'), 350);
+    });
+    document.querySelectorAll('.quick').forEach(button => button.addEventListener('click', () => {
+      const command = button.dataset.command;
+      addMessage(command, 'user');
+      setTimeout(() => addMessage(answerFor(command), 'ai'), 280);
+    }));
+    document.getElementById('openAi').addEventListener('click', () => {
+      document.getElementById('aiPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => chatInput.focus(), 500);
+    });
+    document.querySelectorAll('[data-action]').forEach(button => button.addEventListener('click', () => showToast(button.dataset.action === 'tasks' ? 'Task workspace will open in the next module.' : 'Live activity expanded in the next module.')));
+    document.getElementById('notificationButton').addEventListener('click', () => showToast('You have 2 approvals waiting for your attention.'));
+    document.getElementById('globalSearch').addEventListener('keydown', event => { if (event.key === 'Enter' && event.target.value.trim()) showToast('Searching the company OS for “' + event.target.value.trim() + '”'); });
+    document.addEventListener('keydown', event => { if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); document.getElementById('globalSearch').focus(); } });
+  </script>
+</body>
+</html>

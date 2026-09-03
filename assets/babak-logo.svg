@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Babak AI Company logo</title>
+  <desc id="desc">A geometric B symbol combined with an artificial intelligence circuit mark</desc>
+  <defs>
+    <linearGradient id="bg" x1="16" y1="12" x2="145" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7c5cff"/>
+      <stop offset="0.48" stop-color="#39e7d4"/>
+      <stop offset="1" stop-color="#162a4d"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="56" y1="34" x2="112" y2="126" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ccfdfa"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="5" y="5" width="150" height="150" rx="42" fill="#07101f" stroke="#2c456b" stroke-width="3"/>
+  <path d="M18 104C31 50 69 16 117 17c16 1 27 5 32 10v87c-19 22-47 34-78 30-24-3-42-15-53-40z" fill="url(#bg)" opacity=".26"/>
+  <g fill="none" stroke="url(#mark)" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+    <path d="M57 42v76" stroke-width="11"/>
+    <path d="M57 43h29c18 0 29 9 29 22 0 10-6 17-17 20 14 2 23 10 23 23 0 17-14 28-35 28H57" stroke-width="11"/>
+    <path d="M64 85h23" stroke-width="8"/>
+  </g>
+  <g fill="#39e7d4" stroke="#07101f" stroke-width="4">
+    <circle cx="128" cy="36" r="7"/><circle cx="136" cy="75" r="7"/><circle cx="127" cy="122" r="7"/>
+  </g>
+  <g stroke="#39e7d4" stroke-width="3" opacity=".9"><path d="M119 36h-10"/><path d="M127 75h-14"/><path d="M118 122h-11"/></g>
+</svg>

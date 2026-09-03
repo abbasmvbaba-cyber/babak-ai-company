@@ -31,7 +31,7 @@ html_doc = f'''<!doctype html>
 <main class="wrap">
   <header class="topbar">
     <div class="brand"><div class="brandmark">ب</div><div><div class="eyebrow">BABAK AI COMPANY</div><div class="brandname">کمپانی هوش مصنوعی بابک · منابع انسانی</div></div></div>
-    <nav class="toplinks"><a href="../index.html">داشبورد اصلی</a><a href="data/employees.csv" download>دریافت CSV</a><a href="data/employees.json" download>دریافت JSON</a></nav>
+    <nav class="toplinks"><a href="../dashboard.html">AI Company OS</a><a href="data/employees.csv" download>دریافت CSV</a><a href="data/employees.json" download>دریافت JSON</a></nav>
   </header>
   <div class="notice"><span>◈</span><div><strong>محیط نمونه‌سازی HR</strong> — همهٔ رکوردها ساختگی هستند. کدهای ملی عمداً غیرمعتبرند و تصویرها آواتار برداری‌اند؛ هیچ اطلاعات هویتی واقعی را در رپوی عمومی ذخیره نکنید.</div></div>
   <section class="hero"><div><div class="eyebrow">HR DIRECTORY / 01</div><h1>دایرکتوری ۷۲ نفره شرکت</h1><p>فهرست مرکزی پرسنل، دپارتمان‌ها و لینک ورود به پروندهٔ اختصاصی هر نفر</p></div><div class="updated">آخرین تولید داده: <b>{html.escape(data['generated_at'])}</b><br>نسخهٔ نمایشی قابل اتصال به Supabase</div></section>
