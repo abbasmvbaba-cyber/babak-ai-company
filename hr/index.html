@@ -51,6 +51,7 @@ const age = document.getElementById('age');
 const count = document.getElementById('resultCount');
 const faDigits = value => String(value).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const photoPath = employee => employee.employee_id === 'BAC-0001' ? '../assets/characters/ceo/babak-moradvand-personnel-photo.png' : 'employees/' + encodeURIComponent(employee.employee_id) + '/photo.svg';
 function render() {
   const q = search.value.trim().toLowerCase();
   const list = employees.filter(e => {

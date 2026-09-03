@@ -361,6 +361,14 @@ def avatar_svg(employee: dict, number: int) -> str:
     gender = employee["gender"]
     first = html.escape(employee["first_name"])
     full = html.escape(employee["full_name"])
+    if number == 1:
+        # BAC-0001 uses the approved synthetic personnel portrait everywhere the
+        # dashboard/profile expects the canonical photo.svg path.
+        return f'''<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="عکس پرسنلی نمایشی {full}">
+  <title>عکس پرسنلی نمایشی — {full}</title>
+  <rect width="512" height="512" fill="#071b31"/>
+  <image href="../../../assets/characters/ceo/babak-moradvand-personnel-photo.png" x="0" y="0" width="512" height="512" preserveAspectRatio="xMidYMid slice"/>
+</svg>\n'''
     if gender == "زن":
         hair_shape = f'<path d="M145 232 Q145 105 256 105 Q367 105 367 232 L367 365 Q332 404 256 410 Q180 404 145 365Z" fill="{hair}"/>'
         side_hair = f'<path d="M144 247 Q118 322 155 396 Q184 421 203 386 L185 250Z M368 247 Q394 322 357 396 Q328 421 309 386 L327 250Z" fill="{hair}" opacity=".98"/>'
@@ -397,11 +405,17 @@ def md_table(rows: list[dict]) -> str:
 
 
 def doc_header(employee: dict, title: str) -> str:
-    return f"""---\nemployee_id: {employee['employee_id']}\nsynthetic_demo: true\n---\n\n# {title}\n\n> این سند دادهٔ نمایشی و غیرواقعی برای نمونه‌سازی سامانهٔ منابع انسانی «کمپانی هوش مصنوعی بابک» است و ارزش حقوقی ندارد.\n\n"""
+    photo_block = "\n"
+    if employee["employee_id"] == "BAC-0001":
+        photo_block = "\n![عکس پرسنلی سه‌بعدی نمایشی بابک مرادوند](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.png)\n"
+    return f"""---\nemployee_id: {employee['employee_id']}\nsynthetic_demo: true\n---\n\n# {title}\n\n> این سند دادهٔ نمایشی و غیرواقعی برای نمونه‌سازی سامانهٔ منابع انسانی «کمپانی هوش مصنوعی بابک» است و ارزش حقوقی ندارد.{photo_block}\n"""
 
 
 def profile_md(employee: dict) -> str:
     family = employee["family_info"]
+    is_ceo = employee["employee_id"] == "BAC-0001"
+    photo_label = "عکس پرسنلی سه‌بعدی نمایشی" if is_ceo else "تصویر پروفایل نمونه"
+    photo_href = "../../../assets/characters/ceo/babak-moradvand-personnel-photo.png" if is_ceo else "photo.svg"
     return f"""---
 employee_id: {employee['employee_id']}
 full_name: {employee['full_name']}
@@ -462,7 +476,7 @@ synthetic_demo: true
 
 ## اسناد موجود در این پوشه
 
-- [تصویر پروفایل نمونه](photo.svg)
+- [{photo_label}]({photo_href})
 - [خلاصه استخدام و حکم داخلی نمونه](documents/employment-record.md)
 - [سوابق تحصیلی نمونه](documents/education-record.md)
 - [خلاصه جبران خدمات نمونه](documents/compensation-record.md)
@@ -540,11 +554,14 @@ def family_md(employee: dict) -> str:
 
 
 def checklist_md(employee: dict) -> str:
+    is_ceo = employee["employee_id"] == "BAC-0001"
+    photo_description = "عکس پرسنلی سه‌بعدی نمایشی مدیرعامل، غیرواقعی" if is_ceo else "آواتار برداری ساختگی، نه عکس شخص واقعی"
+    photo_link = "[babak-moradvand-personnel-photo.png](../../../../assets/characters/ceo/babak-moradvand-personnel-photo.png)" if is_ceo else "[photo.svg](../photo.svg)"
     return doc_header(employee, "چک‌لیست مدارک پرونده") + f"""## مدارک ایجادشده برای نمونه‌سازی
 
 | مدرک | مسیر / وضعیت | توضیح |
 |---|---|---|
-| تصویر پروفایل | [photo.svg](../photo.svg) — آماده | آواتار برداری ساختگی، نه عکس شخص واقعی |
+| تصویر پروفایل | {photo_link} — آماده | {photo_description} |
 | فرم اطلاعات پرسنلی | [profile.md](../profile.md) — آماده | داده‌های ساختگی برای تست |
 | خلاصه استخدام | [employment-record.md](employment-record.md) — آماده | پیش‌نویس داخلی غیرالزام‌آور |
 | سوابق تحصیلی | [education-record.md](education-record.md) — آماده | رکورد نمایشی، بدون اصل مدرک |
@@ -561,6 +578,9 @@ def checklist_md(employee: dict) -> str:
 
 def profile_html(employee: dict) -> str:
     e = employee
+    is_ceo = e["employee_id"] == "BAC-0001"
+    photo_alt = "عکس پرسنلی سه‌بعدی نمایشی" if is_ceo else "تصویر نمونه"
+    photo_src = "../../../assets/characters/ceo/babak-moradvand-personnel-photo.png" if is_ceo else "photo.svg"
     education_rows = "".join(
         f"<tr><td>{html.escape(r['level'])}</td><td>{html.escape(r['field'])}</td><td>{html.escape(r['institution'])}</td><td>{html.escape(r['start_date'])}</td><td>{html.escape(r['issue_date'])}</td><td>{html.escape(r['status'])}</td></tr>"
         for r in e["education"]
@@ -578,7 +598,7 @@ def profile_html(employee: dict) -> str:
 </head>
 <body><main class="wrap">
 <div class="top"><div><div class="badge">BABAK AI COMPANY · HR FILE</div><div style="color:var(--muted);font-size:13px">پرونده پرسنلی نمایشی</div></div><a class="back" href="../../index.html">بازگشت به فهرست</a></div>
-<div class="hero"><img class="avatar" src="photo.svg" alt="تصویر نمونه {html.escape(e['full_name'])}"><div><h1>{html.escape(e['full_name'])}</h1><div class="role">{html.escape(e['role'])}</div><div class="meta"><span class="pill">{html.escape(e['employee_id'])}</span><span class="pill">{html.escape(e['department'])}</span><span class="pill">{html.escape(e['gender'])}</span><span class="pill">{e['age']} سال</span><span class="pill">{html.escape(e['age_bucket'])}</span></div></div></div>
+<div class="hero"><img class="avatar" src="{photo_src}" alt="{html.escape(photo_alt + ' ' + e['full_name'])}"><div><h1>{html.escape(e['full_name'])}</h1><div class="role">{html.escape(e['role'])}</div><div class="meta"><span class="pill">{html.escape(e['employee_id'])}</span><span class="pill">{html.escape(e['department'])}</span><span class="pill">{html.escape(e['gender'])}</span><span class="pill">{e['age']} سال</span><span class="pill">{html.escape(e['age_bucket'])}</span></div></div></div>
 <div class="grid">
 <section><h2>اطلاعات شناسایی</h2><table><tr><th>تاریخ تولد</th><td>{e['birth_date_jalali']}</td></tr><tr><th>نام پدر</th><td>{html.escape(e['father_name'])}</td></tr><tr><th>کد ملی نمایشی</th><td>{html.escape(e['national_code'])}</td></tr><tr><th>محل تولد</th><td>{html.escape(e['birth_place'])}</td></tr><tr><th>تابعیت</th><td>ایرانی</td></tr></table></section>
 <section><h2>اطلاعات استخدام</h2><table><tr><th>تاریخ استخدام</th><td>{e['hire_date']}</td></tr><tr><th>سابقه تقریبی</th><td>{e['years_with_company']} سال</td></tr><tr><th>سرپرست مستقیم</th><td>{html.escape(e['supervisor'])}</td></tr><tr><th>ایمیل نمونه</th><td>{html.escape(e['work_email'])}</td></tr><tr><th>پایه حقوق</th><td class="salary">{e['base_salary_display']} تومان</td></tr></table></section>
@@ -682,6 +702,8 @@ def build_employees() -> list[dict]:
                 ],
                 "family_info": {"marital_status": "مجرد", "spouse_name": "ندارد", "children_count": 0},
                 "work_email": "ceo@babak-ai.company",
+                "personnel_photo_file": "assets/characters/ceo/babak-moradvand-personnel-photo.png",
+                "personnel_photo_asset": "assets/characters/ceo/babak-moradvand-personnel-photo.png",
             })
         employees.append(record)
     # Second pass attaches the department head as a supervisor.

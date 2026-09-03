@@ -5,6 +5,8 @@
   "height_cm": 188,
   "concept_version": 2,
   "concept_image": "babak-moradvand-3d-concept.png",
+  "personnel_photo": "babak-moradvand-personnel-photo.png",
+  "personnel_photo_status": "approved-synthetic-portrait",
   "status": "concept-render-v2",
   "rig_status": "not-rigged",
   "target_formats": ["GLB", "VRM"],

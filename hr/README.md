@@ -26,7 +26,7 @@
 | `employees/BAC-xxxx/index.html` | پروندهٔ گرافیکی اختصاصی هر نفر |
 | `employees/BAC-xxxx/profile.md` | پروندهٔ متنی HR با YAML front matter |
 | `employees/BAC-xxxx/profile.json` | رکورد JSON اختصاصی |
-| `employees/BAC-xxxx/photo.svg` | آواتار برداری ساختگی اختصاصی |
+| `employees/BAC-xxxx/photo.svg` | تصویر پرسنلی/آواتار نمایشی اختصاصی؛ برای BAC-0001 عکس پرسنلی سه‌بعدی synthetic |
 | `employees/BAC-xxxx/documents/` | استخدام، تحصیلات، جبران خدمات، خانواده و چک‌لیست مدارک |
 | `scripts/generate_demo_hr.py` | بازتولید تمام ۷۲ رکورد و پوشه‌ها به صورت قطعی |
 | `scripts/build_hr_directory.py` | ساخت دوبارهٔ دایرکتوری HTML از JSON |

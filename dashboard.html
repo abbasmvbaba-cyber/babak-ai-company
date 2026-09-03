@@ -462,7 +462,7 @@
         <div class="top-actions">
           <div class="search"><span class="search-icon">⌕</span><input id="globalSearch" type="search" placeholder="Search the company" /><span class="shortcut">⌘ K</span></div>
           <button class="icon-button" id="notificationButton" aria-label="Notifications">♢<i class="notification-dot"></i></button>
-          <div class="profile"><img class="profile-avatar" src="hr/employees/BAC-0001/photo.svg" alt="Babak Moradvand personnel photo" /><div><div class="profile-name">Babak Moradvand</div><div class="profile-role">Chief Executive Officer</div></div><span class="chev">⌄</span></div>
+          <div class="profile"><img class="profile-avatar" src="assets/characters/ceo/babak-moradvand-personnel-photo.png" alt="Babak Moradvand personnel photo" /><div><div class="profile-name">Babak Moradvand</div><div class="profile-role">Chief Executive Officer</div></div><span class="chev">⌄</span></div>
         </div>
       </header>
 
@@ -935,6 +935,10 @@
     document.getElementById('notificationButton').addEventListener('click', () => showToast('You have 2 approvals waiting for your attention.'));
     document.getElementById('globalSearch').addEventListener('keydown', event => { if (event.key === 'Enter' && event.target.value.trim()) showToast('Searching the company OS for “' + event.target.value.trim() + '”'); });
     document.addEventListener('keydown', event => { if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); document.getElementById('globalSearch').focus(); } });
+  </script>
+</body>
+</html>
+Case() === 'k') { event.preventDefault(); document.getElementById('globalSearch').focus(); } });
   </script>
 </body>
 </html>
